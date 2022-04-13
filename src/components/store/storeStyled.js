@@ -3,24 +3,18 @@ import styled from "styled-components"
 export const Container = styled.div`
   width: 100%;
   height: 100vh;
-`
-
-// untuk penyemangat ayang
-export const Title = styled.p`
-  font-size: 2.3em;
-  font-weight: 500;
   margin: 0;
-  padding: 15px 3px;
 `
 
 export const Category = styled.div`
   width: 100%;
   height: auto;
   display: flex;
+  justify-content: space-around;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
   padding: 2px 6px;
+  margin: 30px 0;
 `
 
 export const CategoryImage = styled.div`
@@ -45,18 +39,20 @@ export const MenuTitle = styled.p`
 
 export const Box = styled.div`
   display: flex;
-  flex-direction: row;
-  margin: 15px 0;
 `
 
 export const ProductBox = styled.div`
   width: 100%;
-  height: 275px;
-  border-radius: 5px;
-  margin: 0 5px;
+  height: 260px;
+  border-radius: 10px;
+  margin: 0 15px;
   box-shadow: 3px 5px 15px -6px rgba(0, 0, 0, 0.75);
   -webkit-box-shadow: 3px 5px 15px -6px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 3px 5px 15px -6px rgba(0, 0, 0, 0.75);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+  margin-top: 10px;
 `
 
 export const ProductDetail = styled.div`
@@ -65,10 +61,14 @@ export const ProductDetail = styled.div`
 `
 
 export const ProductImage = styled.div`
-  width: 100%;
-  height: 100px;
+  width: 50%;
+  height: 50%;
+  margin: 0 auto;
   background: url(${(props) => props.src});
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-clip: border-box;
 `
 
 export const ProductName = styled.p`
