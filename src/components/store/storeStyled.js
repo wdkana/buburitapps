@@ -13,6 +13,13 @@ export const Title = styled.p`
   padding: 15px 3px;
 `
 
+export const MenuTitle = styled.p`
+  font-size: 1.5em;
+  font-weight: 500;
+  margin: 0;
+  padding: 0 5px;
+`
+
 export const Box = styled.div`
   display: flex;
   flex-direction: row;
