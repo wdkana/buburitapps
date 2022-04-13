@@ -1,4 +1,3 @@
-// get id city for request prayer schedule
 import axios from "axios";
 
 export default async function handler(req, res) {

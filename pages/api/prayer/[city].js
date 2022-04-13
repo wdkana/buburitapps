@@ -7,7 +7,7 @@ export default async function handler(req, res) {
     return res.status(404).json({
       code: 404,
       status: "error",
-      result: "Id city is required",
+      result: "city is required",
     });
 
   if (req.method !== "GET")
