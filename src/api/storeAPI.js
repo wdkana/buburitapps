@@ -1,13 +1,15 @@
-import { getInstance, routes } from "./axiosInstance"
+import { getInstance, routes } from "./axiosInstance";
 
 const getProduct = async () => {
   try {
-    const response = await getInstance().get(routes.getProducts())
-    const products = await response.data
-    return products
+    const response = await getInstance().get(routes.getProducts());
+    const {
+      data: { result },
+    } = response;
+    return result;
   } catch (err) {
-    return err
+    return err;
   }
-}
+};
 
-export { getProduct }
+export { getProduct };
