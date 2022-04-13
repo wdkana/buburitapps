@@ -10,10 +10,23 @@ import {
   Text,
   Title,
   Timer,
-  Wrapper,
+  ProductWrapper,
+  ProductTitle,
+  ProductList,
+  ProductBox,
+  ProductButton,
+  ProductImage,
+  ProductImageWrapper,
+  ProductDetailTitle,
+  ProductDetail,
+  ProductDetailPrice,
+  ProductDetailDesc,
+  ProductDetailCategory,
 } from "./styled";
 import styled from "./index.module.css";
 import { checkSingleDateValue } from "../../helpers/string.js";
+import { getProduct } from "../../api/storeAPI.js";
+import Link from "next/link";
 
 const LIST_CITY_ID = ["1301", "1709", "2622", "0228", "3307", "2310", "1505"];
 
@@ -23,6 +36,7 @@ const LandingPage = () => {
   const [date, setDate] = useState("");
   const [isAfterMaghrib, setIsAfterMaghrib] = useState(true);
   const [days, hours, minutes, seconds] = useCountdown(date);
+  const [listProduct, setListProduct] = useState([]);
 
   const getTimerCountdown = () => {
     if (isNaN(days)) return "Loading...";
@@ -70,6 +84,12 @@ const LandingPage = () => {
     }
   };
 
+  const getListProduct = async () => {
+    const products = await getProduct();
+    const sliceProducts = products.slice(0, 4);
+    setListProduct(sliceProducts);
+  };
+
   const handleChangeCity = (e) => {
     setSelectedCity(e.target.value);
   };
@@ -80,6 +100,7 @@ const LandingPage = () => {
 
   useEffect(() => {
     getListCity();
+    getListProduct();
   }, []);
 
   return (
@@ -88,9 +109,9 @@ const LandingPage = () => {
         <Hero>
           <img
             src="mosque.png"
-            width={450}
             alt="mosque"
-            style={{ marginTop: "-8em" }}
+            className={styled["img"]}
+            width="460"
           />
           <Text>
             <Title>
@@ -125,7 +146,32 @@ const LandingPage = () => {
           </svg>
         </div>
       </HeroWrapper>
-      <Wrapper />
+      <ProductWrapper>
+        <ProductTitle>List Product</ProductTitle>
+        <ProductList>
+          {listProduct.map((product, index) => {
+            console.log({ product });
+            return (
+              <ProductBox key={index}>
+                <ProductImageWrapper>
+                  <ProductImage src={product.image} />
+                </ProductImageWrapper>
+                <ProductDetail>
+                  <ProductDetailCategory>
+                    {product.category}
+                  </ProductDetailCategory>
+                  <ProductDetailTitle>{product.title}</ProductDetailTitle>
+                  <ProductDetailPrice>{product.price}$</ProductDetailPrice>
+                  <ProductDetailDesc>{product.description}</ProductDetailDesc>
+                </ProductDetail>
+              </ProductBox>
+            );
+          })}
+        </ProductList>
+        <Link href="/store" passHref>
+          <ProductButton>See Full List Product</ProductButton>
+        </Link>
+      </ProductWrapper>
     </Container>
   );
 };
