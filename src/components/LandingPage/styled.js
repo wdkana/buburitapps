@@ -94,12 +94,73 @@ export const ProductList = styled.div`
 `;
 
 export const ProductBox = styled.div`
-  min-height: 300px;
-  min-width: 250px;
+  min-height: 450px;
+  width: 350px;
   background-color: #575757;
   box-shadow: 8px 5px 8px 1px rgba(0, 0, 0, 0.29);
   -webkit-box-shadow: 8px 5px 8px 1px rgba(0, 0, 0, 0.29);
   -moz-box-shadow: 8px 5px 8px 1px rgba(0, 0, 0, 0.29);
+`;
+
+export const ProductImageWrapper = styled.div`
+  width: 100%;
+  height: 270px;
+  position: relative;
+  overflow: hidden;
+`;
+
+export const ProductImage = styled.img`
+  width: 100%;
+  max-width: inherit;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%) scale(1);
+  -moz-transform: translate(-50%, -50%) scale(1);
+  -o-transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scale(1);
+`;
+
+export const ProductDetail = styled.div`
+  padding: 1em 2em;
+`;
+
+export const ProductDetailCategory = styled.p`
+  letter-spacing: 2px;
+  font-size: 12px;
+  color: #ededed;
+  text-align: right;
+  padding-bottom: 2em;
+`;
+
+export const ProductDetailTitle = styled.h3`
+  letter-spacing: 2px;
+  font-size: 16px;
+  color: #ededed;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+`;
+
+export const ProductDetailPrice = styled.h3`
+  letter-spacing: 2px;
+  font-size: 24px;
+  color: #ededed;
+  font-weight: 600;
+  padding-top: 6px;
+`;
+
+export const ProductDetailDesc = styled.p`
+  letter-spacing: 2px;
+  font-size: 14;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #ededed;
+  padding-top: 6px;
+  font-weight: 400;
 `;
 
 export const ProductButton = styled.button`
