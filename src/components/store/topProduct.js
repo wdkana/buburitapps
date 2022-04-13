@@ -9,7 +9,7 @@ import {
   ProductImage,
   ProductDescription,
   ProductPrice,
-} from "./storeStyled"
+} from "./StoreStyled"
 import "swiper/css"
 
 const TopProduct = ({ products }) => {
