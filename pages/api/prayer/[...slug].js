@@ -1,14 +1,11 @@
 import axios from "axios";
 
 export default async function handler(req, res) {
-  const { city } = req.query;
+  const { slug } = req.query;
 
-  if (!city)
-    return res.status(404).json({
-      code: 404,
-      status: "error",
-      result: "city is required",
-    });
+  let city = slug[0];
+  let year = slug[1];
+  let month = slug[2];
 
   if (req.method !== "GET")
     return res.status(405).json({
@@ -17,13 +14,30 @@ export default async function handler(req, res) {
       result: "Method Not Allowed",
     });
 
-  const date = new Date().toISOString().substring(0, 10).split("-");
-  const getYear = date[0];
-  const getMonth = date[1];
+  if (!city)
+    return res.status(404).json({
+      code: 404,
+      status: "error",
+      result: "city is required",
+    });
+
+  if (!year)
+    return res.status(404).json({
+      code: 404,
+      status: "error",
+      result: "year is required",
+    });
+
+  if (!month)
+    return res.status(404).json({
+      code: 404,
+      status: "error",
+      result: "month is required",
+    });
 
   try {
     const { data } = await axios(
-      `https://api.myquran.com/v1/sholat/jadwal/${city}/${getYear}/${getMonth}`
+      `https://api.myquran.com/v1/sholat/jadwal/${city}/${year}/${month}`
     );
 
     const { jadwal } = data.data;
