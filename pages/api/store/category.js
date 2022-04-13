@@ -3,33 +3,33 @@ export default function handler(req, res) {
     {
       id: 1,
       name: "burger",
-      image: "",
+      image: "./assets/category/burger.png",
     },
     {
       id: 2,
-      name: "burger",
-      image: "",
+      name: "merch",
+      image: "./assets/category/merch.png",
     },
     {
       id: 3,
-      name: "burger",
-      image: "",
+      name: "fashion",
+      image: "./assets/category/wardrobe.png",
     },
     {
       id: 4,
-      name: "burger",
-      image: "",
+      name: "voucher",
+      image: "./assets/category/voucher.png",
     },
     {
       id: 5,
-      name: "burger",
-      image: "",
+      name: "ticket",
+      image: "./assets/category/ticket.png",
     },
-  ];
+  ]
 
   res.status(200).json({
     code: 200,
     status: "OK",
     result: categorys,
-  });
+  })
 }
