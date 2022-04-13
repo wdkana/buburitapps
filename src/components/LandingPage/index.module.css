@@ -11,8 +11,8 @@
 .custom-shape-divider-bottom-1649844128 svg {
     position: relative;
     display: block;
-    width: calc(155% + 1.3px);
-    height: 180px;
+    width: calc(160% + 1.3px);
+    height: 130px;
 }
 
 .custom-shape-divider-bottom-1649844128 .shape-fill {
@@ -44,5 +44,23 @@
     height: 2em;
     border-radius: .25em;
     overflow: hidden;
+}
+
+.img-wrapper {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.img {
+    max-width: 100%;
+    width: 500px; 
+    margin-top: -8em;
+}
+
+@media (max-width: 850px) {
+    .custom-shape-divider-bottom-1649844128 svg {
+        width: calc(200% + 1.3px);
+        height: 104px;
+    }
 }
   

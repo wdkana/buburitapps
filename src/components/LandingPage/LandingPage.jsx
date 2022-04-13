@@ -10,7 +10,11 @@ import {
   Text,
   Title,
   Timer,
-  Wrapper,
+  ProductWrapper,
+  ProductTitle,
+  ProductList,
+  ProductBox,
+  ProductButton,
 } from "./styled";
 import styled from "./index.module.css";
 import { checkSingleDateValue } from "../../helpers/string.js";
@@ -88,9 +92,9 @@ const LandingPage = () => {
         <Hero>
           <img
             src="mosque.png"
-            width={450}
             alt="mosque"
-            style={{ marginTop: "-8em" }}
+            className={styled["img"]}
+            width="460"
           />
           <Text>
             <Title>
@@ -125,7 +129,15 @@ const LandingPage = () => {
           </svg>
         </div>
       </HeroWrapper>
-      <Wrapper />
+      <ProductWrapper>
+        <ProductTitle>List Product</ProductTitle>
+        <ProductList>
+          <ProductBox></ProductBox>
+          <ProductBox></ProductBox>
+          <ProductBox></ProductBox>
+        </ProductList>
+        <ProductButton>See Full List</ProductButton>
+      </ProductWrapper>
     </Container>
   );
 };
