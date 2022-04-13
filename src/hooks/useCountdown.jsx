@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { checkSingleDateValue } from "../helpers/string";
 
 const useCountdown = (targetDate) => {
   const countDownDate = new Date(targetDate).getTime();
@@ -8,12 +9,14 @@ const useCountdown = (targetDate) => {
   );
 
   useEffect(() => {
+    if (!targetDate) return;
+
     const interval = setInterval(() => {
       setCountDown(countDownDate - new Date().getTime());
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [countDownDate]);
+  }, [countDownDate, targetDate]);
 
   return getReturnValues(countDown);
 };
@@ -33,12 +36,6 @@ const getReturnValues = (countDown) => {
   );
 
   return [days, hours, minutes, seconds];
-};
-
-const checkSingleDateValue = (value) => {
-  return value.toString().length === 1
-    ? `0${value.toString()}`
-    : value.toString();
 };
 
 export { useCountdown };
