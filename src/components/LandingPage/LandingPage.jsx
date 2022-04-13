@@ -1,4 +1,7 @@
+import { useEffect, useState } from "react";
+import { getPrayerTime } from "../../api/prayerAPI.js";
 import { useCountdown } from "../../hooks/useCountdown";
+import { combineDateAndTime, afterMomentHour } from "../../helpers/date.js";
 
 import {
   Container,
@@ -11,10 +14,39 @@ import {
 } from "./styled";
 import styled from "./index.module.css";
 
-const targetDate = new Date("April 13, 2022 18:15:00");
-
 const LandingPage = () => {
-  const [days, hours, minutes, seconds] = useCountdown(targetDate);
+  const [date, setDate] = useState("");
+  const [isAfterMaghrib, setIsAfterMaghrib] = useState(true);
+  const [days, hours, minutes, seconds] = useCountdown(date);
+
+  const getTimerCountdown = () => {
+    if (isNaN(days)) return "Loading...";
+
+    return `${days}:${hours}:${minutes}:${seconds}`;
+  };
+
+  const getTime = async () => {
+    try {
+      const response = await getPrayerTime("bandung");
+      const { Maghrib, Imsak } = response;
+
+      const todayDate = new Date();
+      const maghribTimer = combineDateAndTime(todayDate, Maghrib, false);
+      const imsakTimer = combineDateAndTime(todayDate, Imsak, true);
+
+      const isTimeAfterMaghrib = afterMomentHour(todayDate, maghribTimer);
+      const selectedDate = isTimeAfterMaghrib ? imsakTimer : maghribTimer;
+
+      setIsAfterMaghrib(isAfterMaghrib);
+      setDate(selectedDate);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getTime();
+  }, []);
 
   return (
     <Container>
@@ -24,10 +56,13 @@ const LandingPage = () => {
             src="mosque.png"
             width={450}
             alt="mosque"
-            style={{ marginTop: "-8em" }}></img>
+            style={{ marginTop: "-8em" }}
+          />
           <Text>
-            <Title>Waktu Menjelang Buka PUASA</Title>
-            <Timer>{`${days}:${hours}:${minutes}:${seconds}`}</Timer>
+            <Title>
+              Waktu Menjelang {isAfterMaghrib ? "Imsyak" : "Buka Puasa"}
+            </Title>
+            <Timer>{getTimerCountdown()}</Timer>
           </Text>
         </Hero>
 
