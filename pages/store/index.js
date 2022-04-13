@@ -1,4 +1,4 @@
-import Store from "../../src/components/store"
+import Store from "../../src/components/Store"
 import { getProduct } from "../../src/api/storeAPI"
 
 export async function getStaticProps() {

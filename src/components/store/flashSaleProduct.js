@@ -7,10 +7,10 @@ import {
   ProductDescription,
   ProductDetail,
   ProductPrice,
-} from "./storeStyled"
+} from "./StoreStyled"
 const FlashSaleProduct = () => {
   return (
-    <div>
+    <div style={{ marginTop: 20 }}>
       <MenuTitle>Flash Sale Product</MenuTitle>
       <Box>
         <ProductBox>
