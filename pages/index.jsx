@@ -2,7 +2,6 @@ import Head from "next/head";
 import LandingPage from "../src/components/LandingPage/LandingPage";
 
 const Home = () => {
-  console.log(new Date());
   return (
     <div>
       <Head>
