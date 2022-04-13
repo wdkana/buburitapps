@@ -20,7 +20,9 @@ const getInstance = () => {
 };
 
 const routes = {
-  prayerTime: (city = "") => `/api/prayer/${city}`,
+  getCity: () => `/api/prayer/city`,
+  getPrayerTime: (city = "", year = "", month = "") =>
+    `/api/prayer/${city}/${year}/${month}`,
 };
 
 export { getInstance, routes, apiUrl };

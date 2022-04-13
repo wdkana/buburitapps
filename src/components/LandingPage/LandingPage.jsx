@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getPrayerTime } from "../../api/prayerAPI.js";
+import { getCity, getPrayerTime } from "../../api/prayerAPI.js";
 import { useCountdown } from "../../hooks/useCountdown";
 import { combineDateAndTime, afterMomentHour } from "../../helpers/date.js";
 
@@ -13,8 +13,13 @@ import {
   Wrapper,
 } from "./styled";
 import styled from "./index.module.css";
+import { checkSingleDateValue } from "../../helpers/string.js";
+
+const LIST_CITY_ID = ["1301", "1709", "2622", "0228", "3307", "2310", "1505"];
 
 const LandingPage = () => {
+  const [selectedCity, setSelectedCity] = useState("");
+  const [listCity, setListCity] = useState([]);
   const [date, setDate] = useState("");
   const [isAfterMaghrib, setIsAfterMaghrib] = useState(true);
   const [days, hours, minutes, seconds] = useCountdown(date);
@@ -27,12 +32,20 @@ const LandingPage = () => {
 
   const getTime = async () => {
     try {
-      const response = await getPrayerTime("bandung");
-      const { Maghrib, Imsak } = response;
-
       const todayDate = new Date();
-      const maghribTimer = combineDateAndTime(todayDate, Maghrib, false);
-      const imsakTimer = combineDateAndTime(todayDate, Imsak, true);
+      const todayYear = checkSingleDateValue(todayDate.getFullYear());
+      const todayMonth = checkSingleDateValue(todayDate.getMonth() + 1);
+      const todayDay = checkSingleDateValue(todayDate.getDate());
+      const selectedTodayDate = `${todayDay}/${todayMonth}/${todayYear}`;
+
+      const response = await getPrayerTime(selectedCity, todayYear, todayMonth);
+      const getSelectedResponseDate = response.find(
+        (x) => x.tanggal.split(", ")[1] === selectedTodayDate
+      );
+      const { maghrib, imsak } = getSelectedResponseDate;
+
+      const maghribTimer = combineDateAndTime(todayDate, maghrib, false);
+      const imsakTimer = combineDateAndTime(todayDate, imsak, true);
 
       const isTimeAfterMaghrib = afterMomentHour(todayDate, maghribTimer);
       const selectedDate = isTimeAfterMaghrib ? imsakTimer : maghribTimer;
@@ -44,8 +57,29 @@ const LandingPage = () => {
     }
   };
 
+  const getListCity = async () => {
+    try {
+      const response = await getCity();
+      const selectedListCity = response.filter((city) =>
+        LIST_CITY_ID.includes(city.id)
+      );
+      setSelectedCity(selectedListCity[0].id);
+      setListCity(selectedListCity);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleChangeCity = (e) => {
+    setSelectedCity(e.target.value);
+  };
+
   useEffect(() => {
-    getTime();
+    if (selectedCity) getTime();
+  }, [selectedCity]);
+
+  useEffect(() => {
+    getListCity();
   }, []);
 
   return (
@@ -60,9 +94,22 @@ const LandingPage = () => {
           />
           <Text>
             <Title>
-              Waktu Menjelang {isAfterMaghrib ? "Imsyak" : "Buka Puasa"}
+              Waktu Menjelang {!isAfterMaghrib ? "Buka Puasa" : "Imsak"}
             </Title>
             <Timer>{getTimerCountdown()}</Timer>
+            <div className={`${styled.select}`}>
+              <select
+                className={`${styled["select-tag"]}`}
+                onChange={handleChangeCity}>
+                {listCity.map((city, id) => {
+                  return (
+                    <option value={city.id} key={id}>
+                      {city.lokasi}
+                    </option>
+                  );
+                })}
+              </select>
+            </div>
           </Text>
         </Hero>
 

@@ -18,3 +18,31 @@
 .custom-shape-divider-bottom-1649844128 .shape-fill {
     fill: #444444;
 }
+
+.select-tag {
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 0.5em;
+    color: #fff;
+    background-color: #444444;
+    background-image: none;
+    cursor: pointer;
+}
+
+.select-tag::-ms-expand {
+    display: none;
+}
+
+.select {
+    margin-top: 1em;
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 2em;
+    border-radius: .25em;
+    overflow: hidden;
+}
+  
