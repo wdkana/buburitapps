@@ -21,7 +21,7 @@ export const Box = styled.div`
 
 export const ProductBox = styled.div`
   width: 100%;
-  height: auto;
+  height: 275px;
   border-radius: 5px;
   margin: 0 5px;
   box-shadow: 3px 5px 15px -6px rgba(0, 0, 0, 0.75);

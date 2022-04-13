@@ -1,16 +1,15 @@
 import Store from "../../src/components/store"
-import axios from "axios"
+import { getProduct } from "../../src/api/storeAPI"
 
-// export async function getStaticProps() {
-//   const req = axios.get("/api/product")
-//   const products = await req.data
-//   return {
-//     props: { products },
-//   }
-// }
+export async function getStaticProps() {
+  const products = await getProduct()
+  return {
+    props: { products },
+  }
+}
 
 const StorePage = ({ products }) => {
-  return <Store />
+  return <Store products={products} />
 }
 
 export default StorePage
