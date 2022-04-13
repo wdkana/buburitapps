@@ -33,8 +33,7 @@ export const CategoryImage = styled.div`
 export const CategoryTitle = styled.p`
   font-size: 0.9em;
   font-weight: 500;
-  margin: 2px;
-  padding: 0 10px;
+  text-align: center;
 `
 
 export const MenuTitle = styled.p`

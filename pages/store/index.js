@@ -1,15 +1,16 @@
 import Store from "../../src/components/Store"
-import { getProduct } from "../../src/api/storeAPI"
+import { getProduct, getCategories } from "../../src/api/storeAPI"
 
 export async function getStaticProps() {
   const products = await getProduct()
+  const categories = await getCategories()
   return {
-    props: { products },
+    props: { products, categories },
   }
 }
 
-const StorePage = ({ products }) => {
-  return <Store products={products} />
+const StorePage = ({ products, categories }) => {
+  return <Store products={products} categories={categories} />
 }
 
 export default StorePage
