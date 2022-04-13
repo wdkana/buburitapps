@@ -25,6 +25,12 @@ export const Hero = styled.div`
   }
 `;
 
+export const HeroImage = styled.img`
+  max-width: 100%;
+  width: 500px;
+  margin-top: -8em;
+`;
+
 export const Text = styled.div`
   display: flex;
   flex-direction: column;
@@ -51,7 +57,7 @@ export const Title = styled.h1`
 `;
 
 export const Timer = styled.h3`
-  margin-top: 18px;
+  margin-top: 8px;
   color: #da0037;
   letter-spacing: 10px;
   font-size: 3em;
