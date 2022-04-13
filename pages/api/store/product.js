@@ -1,5 +1,12 @@
 export default function handler(req, res) {
-  let product = [
+  if (req.method !== "GET" && req.method !== "POST")
+    return res.status(405).json({
+      code: 405,
+      status: "error",
+      result: "Method Not Allowed",
+    });
+
+  let products = [
     {
       id: 1,
       title: "Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops",
@@ -268,5 +275,49 @@ export default function handler(req, res) {
     },
   ];
 
-  res.status(200).json(product);
+  if (req.method === "GET") {
+    res.status(200).json({
+      code: 200,
+      status: "OK",
+      result: products,
+    });
+  } else if (req.method === "POST") {
+    const { filter, value } = req.body;
+
+    if (!filter)
+      return res.status(404).json({
+        code: 404,
+        status: "error",
+        result: "filter is required",
+      });
+
+    if (!value)
+      return res.status(404).json({
+        code: 404,
+        status: "error",
+        result: "value filter is required",
+      });
+
+    let product;
+
+    switch (filter) {
+      case "product":
+        product = products.find((ip) => ip.id === parseInt(value));
+        break;
+      case "category":
+        product = products.filter((ip) => ip.category === value);
+        break;
+      case "price":
+        product = products.filter((ip) => ip.price === parseInt(value));
+        break;
+      default:
+        break;
+    }
+
+    res.status(200).json({
+      code: 200,
+      status: "OK",
+      result: product,
+    });
+  }
 }
