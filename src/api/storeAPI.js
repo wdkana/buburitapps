@@ -1,4 +1,4 @@
-import { getInstance, routes } from "./axiosInstance";
+import { getInstance, routes } from "./axiosInstance"
 
 const getProduct = async () => {
   try {
@@ -8,9 +8,9 @@ const getProduct = async () => {
     } = response
     return result
   } catch (err) {
-    return err;
+    return err
   }
-};
+}
 
 const getCategories = async () => {
   try {

@@ -1,15 +1,25 @@
 import Store from "../../src/components/Store"
 import { getProduct, getCategories } from "../../src/api/storeAPI"
+import { useEffect, useState } from "react"
 
-export async function getStaticProps() {
-  const products = await getProduct()
-  const categories = await getCategories()
-  return {
-    props: { products, categories },
+const StorePage = () => {
+  const [products, setProducts] = useState([])
+  const [categories, setCategories] = useState([])
+
+  useEffect(() => {
+    productData()
+  }, [])
+
+  const productData = async () => {
+    try {
+      const products = await getProduct()
+      const categories = await getCategories()
+      setProducts(products)
+      setCategories(categories)
+    } catch (e) {
+      console.log(e)
+    }
   }
-}
-
-const StorePage = ({ products, categories }) => {
   return <Store products={products} categories={categories} />
 }
 

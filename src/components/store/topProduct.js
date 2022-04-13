@@ -17,12 +17,7 @@ const TopProduct = ({ products }) => {
     <div>
       <MenuTitle>Top Product</MenuTitle>
       <Box>
-        <Swiper
-          spaceBetween={10}
-          slidesPerView={2}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
-        >
+        <Swiper slidesPerView={"2.5"} spaceBetween={8}>
           {products.map((product, index) => {
             return (
               <SwiperSlide key={index}>
