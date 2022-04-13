@@ -4132,6 +4132,11 @@
   dependencies:
     "loose-envify" "^1.1.0"
 
+"read-more-react@^1.0.10":
+  "integrity" "sha512-8IRDU/tJX1hLbHjPxJHeUxAhm/wC8RHPSbAA+3mS7Dk13/PJf9ra7Z18apkqqPkENIoEaQI5NqhIMQIa1vOxfw=="
+  "resolved" "https://registry.npmjs.org/read-more-react/-/read-more-react-1.0.10.tgz"
+  "version" "1.0.10"
+
 "readable-stream@^3.1.1":
   "integrity" "sha512-BViHy7LKeTz4oNnkcLJ+lVSL6vpiFeX6/d3oSH8zCW7UxP2onchk+vTGB143xuFjHS3deTgkKoXXymXqymiIdA=="
   "resolved" "https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.0.tgz"
