@@ -9,6 +9,7 @@ import {
   ProductButton,
   ProductCol,
   ProductDetail,
+  ProductDetailButton,
   ProductDetailCategory,
   ProductDetailDesc,
   ProductDetailPrice,
@@ -54,31 +55,22 @@ const StoreComponent = () => {
         ...(param?.filter &&
           param?.value !== "all" && { filter: param.filter }),
         ...(param?.value && param?.value !== "all" && { value: param.value }),
+        ...(param?.search && { search: param.search }),
       };
 
       const results = await getProduct(queryParam);
       const { result: products, next_page: nextPage } = results;
 
-      if (products === undefined) {
-        const newQuery = {
-          ...filterOption,
-          page: filterOption.page - 1,
-        };
+      const isAddData =
+        param?.addData === "true"
+          ? true
+          : param?.addData === "false"
+          ? false
+          : param?.addData;
 
-        setFilterOption(newQuery);
-        setQueryFilter(newQuery);
-      } else {
-        const isAddData =
-          param?.addData === "true"
-            ? true
-            : param?.addData === "false"
-            ? false
-            : param?.addData;
-
-        const newData = isAddData ? [...productsList, ...products] : products;
-        setProductsList(newData);
-        setAllDataFetched(nextPage === "-" && true);
-      }
+      const newData = isAddData ? [...productsList, ...products] : products;
+      setProductsList(newData);
+      setAllDataFetched(nextPage === "-" && true);
     } catch (e) {
       console.error(e);
     }
@@ -180,6 +172,7 @@ const StoreComponent = () => {
                           {product.description}
                         </ProductDetailDesc>
                       </ProductDetail>
+                      <ProductDetailButton>Detail</ProductDetailButton>
                     </ProductBox>
                   </ProductCol>
                 );

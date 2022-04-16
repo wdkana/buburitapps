@@ -161,7 +161,8 @@ export const ProductImage = styled.img`
 `;
 
 export const ProductDetail = styled.div`
-  padding: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #c5d0d3;
 `;
 
 export const ProductDetailCategory = styled.p`
@@ -221,4 +222,25 @@ export const ProductButton = styled.button`
 export const ProductShowed = styled.p`
   color: #8a8890;
   margin-bottom: 50px;
+`;
+
+export const ProductDetailButton = styled.button`
+  width: 100%;
+  border: 0;
+  padding: 0 1em;
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.8em;
+  background-color: #566ffe;
+  color: #fff;
+  transition: 0.2s;
+  box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    filter: brightness(115%);
+  }
 `;
