@@ -148,7 +148,7 @@ const StoreComponent = () => {
           })}
         </StoreCategory>
       </StoreCategoryWrapper>
-      <Container color="#ecf1f9" zIndex="0">
+      <Container>
         <ProductWrapper>
           <ProductTitle>Semua Produk</ProductTitle>
           <ProductListWrapper>
