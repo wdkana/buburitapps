@@ -54,7 +54,9 @@ const Header = () => {
             <Link href="/store" passHref>
               <MenuItem>Produk</MenuItem>
             </Link>
-            <MenuItem>Tentang Kami</MenuItem>
+            <Link href="/about" passHref>
+              <MenuItem>Tentang Kami</MenuItem>
+            </Link>
           </Menu>
           <MenuSearch>
             <form onSubmit={handleSearchSubmit}>

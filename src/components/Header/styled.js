@@ -60,7 +60,7 @@ export const Title = styled.h1`
   cursor: pointer;
 
   @media (max-width: 992px) {
-    margin-top: 15px;
+    margin-top: 20px;
   }
 `;
 

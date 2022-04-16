@@ -49,23 +49,23 @@ export const Container = styled.div`
   position: relative;
   width: 100%;
   min-height: 700px;
+  background-color: #ecf1f9;
+`;
+
+export const ProductWrapper = styled.div`
+  padding-top: 100px;
   padding-left: calc(${paddingSpace} / 2);
   padding-right: calc(${paddingSpace} / 2);
   margin-left: auto;
   margin-right: auto;
-  background-color: #ecf1f9;
 
   @media (max-width: 1400px) {
     max-width: 1250px;
   }
 
   @media (max-width: 768px) {
-    max-width: 800px !important;
+    max-width: 800px;
   }
-`;
-
-export const ProductWrapper = styled.div`
-  padding-top: 100px;
 `;
 
 export const ProductTitle = styled.h2`

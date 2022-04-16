@@ -16,7 +16,7 @@ export const Container = styled.div`
     position: absolute;
     right: 0;
     background: url(${(props) => props.src});
-    width: 315px;
+    width: 310px;
     height: 100%;
     background-repeat: no-repeat;
     background-size: contain;
