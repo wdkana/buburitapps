@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Footer = styled.footer`
-  padding: 5em 10em 3em 10em;
+  padding: 5em 10em 4em 10em;
   background-color: #fff;
   z-index: 1;
 
   @media (max-width: 768px) {
-    padding: 5em 5em 3em 5em;
+    padding: 5em 5em 4em 5em;
   }
 `;
 
