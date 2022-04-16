@@ -1,0 +1,28 @@
+.input {
+    width: 90%;
+    height: 100%;
+    background: transparent!important;
+    border: none !important;
+    box-shadow: 0 17px 13px 0 rgba(37, 59, 94, 0.04);
+    padding: 15px 15px;
+    color: #232226;
+    line-height: 1.5;
+    font-weight: 400;
+    font-size: inherit;
+    border-radius: 12px;
+    position: relative;
+    -webkit-appearance: none;
+    transition: all .4s cubic-bezier(.4,0,.2,1);
+    display: block;
+}
+
+@media only screen and (max-width: 992px) {
+    .input {
+      width: 95%;
+    }
+}
+
+.input:focus {
+    border: none;
+    outline: none;
+}

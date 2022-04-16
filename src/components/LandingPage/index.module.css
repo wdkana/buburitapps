@@ -1,0 +1,66 @@
+.custom-shape-divider-bottom-1649844128 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1649844128 svg {
+    position: relative;
+    display: block;
+    width: calc(160% + 1.3px);
+    height: 130px;
+}
+
+.custom-shape-divider-bottom-1649844128 .shape-fill {
+    fill: #444444;
+}
+
+.select-tag {
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    flex: 1;
+    padding: 0 0.5em;
+    color: #fff;
+    background-color: #444444;
+    background-image: none;
+    cursor: pointer;
+}
+
+.select-tag::-ms-expand {
+    display: none;
+}
+
+.select {
+    margin-top: 1em;
+    position: relative;
+    display: flex;
+    width: 20em;
+    height: 2em;
+    border-radius: .25em;
+    overflow: hidden;
+}
+
+.img-wrapper {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.img {
+    max-width: 100%;
+    width: 500px; 
+    margin-top: -8em;
+}
+
+@media (max-width: 850px) {
+    .custom-shape-divider-bottom-1649844128 svg {
+        width: calc(200% + 1.3px);
+        height: 104px;
+    }
+}
+  
