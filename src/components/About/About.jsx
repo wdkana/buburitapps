@@ -23,7 +23,7 @@ const AboutComponent = () => {
           <ImageColumn>
             <ImageWrapper mr="6em">
               <Image src="./assets/gegy.jpeg" alt="about" />
-              <ImageText>Dea Afrizal</ImageText>
+              <ImageText>Gegy Hamdani</ImageText>
             </ImageWrapper>
             <ImageWrapper>
               <Image src="./assets/dea.png" alt="about" />
