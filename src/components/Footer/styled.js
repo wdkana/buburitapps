@@ -27,13 +27,17 @@ export const Title = styled.h1`
   cursor: pointer;
 
   @media (max-width: 768px) {
-    margin-bottom: 2em;
+    text-align: center;
   }
 `;
 
 export const Copyright = styled.p`
   font-size: 0.8em;
   color: #183b56;
+
+  @media (max-width: 768px) {
+    margin-bottom: 2em;
+  }
 `;
 
 export const MenuWrapper = styled.div`
