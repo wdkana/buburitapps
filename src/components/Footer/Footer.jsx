@@ -16,7 +16,9 @@ const FooterComponent = () => {
     <Footer>
       <Wrapper>
         <div>
-          <Title>Cuyshop</Title>
+          <Link href="/" passHref>
+            <Title>Cuyshop</Title>
+          </Link>
           <Copyright>
             Copyright &copy; {new Date().getFullYear()}. Cuy Team
           </Copyright>

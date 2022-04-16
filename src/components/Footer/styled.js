@@ -24,6 +24,7 @@ export const Title = styled.h1`
   color: #566ffe;
   font-weight: 800;
   text-transform: uppercase;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     margin-bottom: 2em;
