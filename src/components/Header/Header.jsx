@@ -26,7 +26,7 @@ const Header = () => {
 
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    if (filterOption.value === "") return;
+    if (filterOption.search === "") return;
     console.log({ filterOption });
     router.push({ pathname: "/store", query: filterOption }, undefined);
   };
