@@ -8,6 +8,9 @@ export const HeaderWrapper = styled.header`
   white-space: nowrap;
   height: 80px;
   transition: 0.2s;
+  position: sticky;
+  top: 0;
+  z-index: 999;
 
   @media (max-width: 992px) {
     height: ${(props) => (props?.height ? "80px" : "310px")};

@@ -36,7 +36,6 @@ const StoreComponent = () => {
     value: "",
     addData: false,
   });
-  const [page, setPage] = useState(1);
   const [isAllDataFetched, setAllDataFetched] = useState(false);
 
   const router = useRouter();
