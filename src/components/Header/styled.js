@@ -1,19 +1,18 @@
 import styled from "styled-components";
 
 export const HeaderWrapper = styled.header`
-  position: relative;
+  position: sticky;
+  top: 0;
   background: #fff;
   border-bottom: 1px solid #e2eef1;
   width: 100%;
   white-space: nowrap;
   height: 80px;
   transition: 0.2s;
-  position: sticky;
-  top: 0;
   z-index: 999;
 
   @media (max-width: 992px) {
-    height: ${(props) => (props?.height ? "80px" : "310px")};
+    height: ${(props) => (props?.height === "true" ? "80px" : "310px")};
   }
 `;
 
@@ -49,6 +48,7 @@ export const Wrapper = styled.div`
   @media (max-width: 992px) {
     align-items: start;
     flex-direction: column;
+    overflow: hidden;
   }
 `;
 
@@ -102,7 +102,7 @@ export const MenuSearch = styled.div`
   @media (max-width: 992px) {
     margin-left: 0;
     margin-top: 40px;
-    width: 100%;
+    width: 99%;
   }
 `;
 
