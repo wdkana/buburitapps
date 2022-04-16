@@ -46,7 +46,7 @@ const LandingPage = () => {
         <Wrapper>
           <Hero>
             <HeroRow>
-              <HeroImage src="./assets/hero-1.webp" />
+              <HeroImage src="./assets/hero-1-new.png" />
             </HeroRow>
             <HeroRow>
               <Text>
