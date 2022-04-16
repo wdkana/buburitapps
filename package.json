@@ -17,6 +17,7 @@
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
+    "react-icons": "^4.3.1",
     "read-more-react": "^1.0.10",
     "styled-components": "^5.3.5",
     "swiper": "^8.1.0"

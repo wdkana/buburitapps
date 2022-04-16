@@ -30,6 +30,10 @@ export const Container = styled.div`
     @media (max-width: 992px) {
       width: 500px;
     }
+
+    @media (max-width: 635px) {
+      width: 350px;
+    }
   }
 `;
 
@@ -87,9 +91,7 @@ export const HeroImage = styled.img`
 
   @media (max-width: 1270px) {
     width: 100%;
-  }
-
-  @media (max-width: 992px) {
+    padding-left: 20px;
     padding-left: 0;
   }
 `;
@@ -100,7 +102,7 @@ export const Text = styled.div`
 
   @media (max-width: 992px) {
     margin: 0 40px;
-    padding-top: 100px;
+    padding-top: 60px;
     padding-bottom: 20px;
   }
 `;

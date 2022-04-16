@@ -53,7 +53,7 @@ const LandingPage = () => {
               <Text>
                 <Title>Temukan barang yang kamu inginkan di Cuyshop</Title>
                 <SubTitle>
-                  Cuyshop adalah e-commerce yang dapat memberiukan pengalaman
+                  Cuyshop adalah e-commerce yang dapat memberikan pengalaman
                   terbaik untuk jual beli bagi pengguna
                 </SubTitle>
                 <Link href="/store" passHref>
