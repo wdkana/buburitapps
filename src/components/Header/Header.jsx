@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import { GiHamburgerMenu } from "react-icons/Gi";
 
 import {
@@ -21,12 +22,16 @@ const Header = () => {
   };
 
   return (
-    <HeaderWrapper height={isShrinkHeader}>
+    <HeaderWrapper height={`${isShrinkHeader}`}>
       <Container>
         <Wrapper>
-          <Title>Cuyshop</Title>
+          <Link href="/" passHref>
+            <Title>Cuyshop</Title>
+          </Link>
           <Menu>
-            <MenuItem>Produk</MenuItem>
+            <Link href="/store" passHref>
+              <MenuItem>Produk</MenuItem>
+            </Link>
             <MenuItem>Kategori</MenuItem>
             <MenuItem>Tentang Kami</MenuItem>
           </Menu>

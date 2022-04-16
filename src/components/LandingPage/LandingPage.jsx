@@ -1,4 +1,7 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+
+import { getProduct } from "../../api/storeAPI.js";
 
 import {
   Container,
@@ -23,17 +26,13 @@ import {
   Wrapper,
   ProductCol,
 } from "./styled";
-import { getProduct } from "../../api/storeAPI.js";
-import Link from "next/link";
-import Header from "../Header/Header.jsx";
 
 const LandingPage = () => {
   const [listProduct, setListProduct] = useState([]);
 
   const getListProduct = async () => {
-    const products = await getProduct();
-    const sliceProducts = products.slice(0, 8);
-    setListProduct(sliceProducts);
+    const products = await getProduct({ page: 1 });
+    setListProduct(products);
   };
 
   useEffect(() => {
@@ -42,7 +41,6 @@ const LandingPage = () => {
 
   return (
     <>
-      <Header />
       <Container src="./assets/hero-new.webp" color="#fff" zIndex="1">
         <Wrapper>
           <Hero>

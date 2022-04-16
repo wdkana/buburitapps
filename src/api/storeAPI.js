@@ -1,27 +1,30 @@
-import { getInstance, routes } from "./axiosInstance"
+import { getInstance, routes } from "./axiosInstance";
 
-const getProduct = async () => {
+const getProduct = async ({ page }) => {
+  const queryPage = `${page ? `page=${page}&` : ""}`;
+  const query = queryPage;
+
   try {
-    const response = await getInstance().get(routes.getProducts())
+    const response = await getInstance().get(routes.getProducts(query));
     const {
       data: { result },
-    } = response
-    return result
+    } = response;
+    return result;
   } catch (err) {
-    return err
+    return err;
   }
-}
+};
 
 const getCategories = async () => {
   try {
-    const response = await getInstance().get(routes.getCategories())
+    const response = await getInstance().get(routes.getCategories());
     const {
       data: { result },
-    } = response
-    return result
+    } = response;
+    return result;
   } catch (err) {
-    return err
+    return err;
   }
-}
+};
 
-export { getProduct, getCategories }
+export { getProduct, getCategories };

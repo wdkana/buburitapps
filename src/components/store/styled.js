@@ -2,42 +2,47 @@ import styled from "styled-components";
 
 export const paddingSpace = "1.5rem";
 
-export const Container = styled.div`
-  box-shadow: 0 17px 13px 0 rgb(25 44 75 / 8%);
-  overflow: hidden;
-  background: ${(props) => props.color};
-  z-index: ${(props) => props.zIndex};
+export const StoreHeaderContainer = styled.div`
+  background: #fff;
+  padding: 100px 0;
+  border-bottom: 1px solid #c5d0d3;
   position: relative;
-  box-sizing: border-box;
-  display: block;
+  z-index: 0;
+`;
 
-  &:before {
-    content: "";
-    position: absolute;
-    right: 0;
-    background: url(${(props) => props.src});
-    width: 315px;
-    height: 100%;
-    background-repeat: no-repeat;
-    background-size: contain;
-    z-index: -1;
-    box-sizing: border-box;
+export const StoreHeaderTitle = styled.h1`
+  text-align: center;
+  letter-spacing: 2px;
+  line-height: 1.2;
+  font-size: 3em;
+  color: #183b56;
+  font-weight: 800;
+`;
 
-    @media (max-width: 1400px) {
-      width: 285px;
-    }
+export const StoreCategoryWrapper = styled.div`
+  background-color: #fff;
+  border-bottom: 1px solid #c5d0d3;
+  padding-top: 20px;
+  padding-bottom: 20px;
+`;
 
-    @media (max-width: 992px) {
-      width: 500px;
-    }
+export const StoreCategory = styled.div`
+  display: flex;
+  justify-content: center;
+`;
 
-    @media (max-width: 635px) {
-      width: 350px;
-    }
+export const StoreCategoryItem = styled.div`
+  margin-left: 30px;
+  text-transform: capitalize;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:hover {
+    transform: scale(1.05);
   }
 `;
 
-export const Wrapper = styled.div`
+export const Container = styled.div`
   box-sizing: border-box;
   position: relative;
   width: 100%;
@@ -46,7 +51,7 @@ export const Wrapper = styled.div`
   padding-right: calc(${paddingSpace} / 2);
   margin-left: auto;
   margin-right: auto;
-  margin-top: ${(props) => props.mt};
+  background-color: #ecf1f9;
 
   @media (max-width: 1400px) {
     max-width: 1250px;
@@ -57,79 +62,8 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const Hero = styled.div`
-  min-height: inherit;
-  display: flex;
-  flex-wrap: flex;
-  align-items: center;
-  flex-direction: row;
-  justify-content: center;
-
-  @media (max-width: 992px) {
-    flex-direction: column-reverse;
-  }
-`;
-
-export const HeroRow = styled.div`
-  max-width: 100%;
-  flex-shrink: 0;
-  width: 100%;
-
-  @media (min-width: 992px) {
-    flex: 0 0 auto;
-    width: 50%;
-  }
-`;
-
-export const HeroImage = styled.img`
-  width: 85%;
-  max-width: 100%;
-  height: auto;
-  user-select: none;
-  vertical-align: middle;
-  padding-left: 40px;
-
-  @media (max-width: 1270px) {
-    width: 100%;
-    padding-left: 20px;
-    padding-left: 0;
-  }
-`;
-
-export const Text = styled.div`
-  padding: 100px 0;
-  margin-left: 50px;
-
-  @media (max-width: 992px) {
-    margin: 0 40px;
-    padding-top: 60px;
-    padding-bottom: 20px;
-  }
-`;
-
-export const Title = styled.h1`
-  letter-spacing: 4px;
-  line-height: 1.2;
-  font-size: 2.5em;
-  color: #183b56;
-  font-weight: 800;
-`;
-
-export const SubTitle = styled.p`
-  font-size: 16px;
-  line-height: 1.6;
-  color: #6f7d95;
-  max-width: 37.5rem;
-  margin: 16px 0;
-`;
-
 export const ProductWrapper = styled.div`
-  width: 100%;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  margin-top: 50;
+  padding-top: 100px;
 `;
 
 export const ProductTitle = styled.h2`
@@ -137,6 +71,15 @@ export const ProductTitle = styled.h2`
   color: #183b56;
   font-weight: 700;
   padding-left: 10px;
+`;
+
+export const ProductListWrapper = styled.div`
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 20px;
 `;
 
 export const ProductList = styled.div`
@@ -255,7 +198,7 @@ export const ProductDetailDesc = styled.p`
 
 export const ProductButton = styled.button`
   border: 0;
-  padding: 0 1.5em;
+  padding: 0 2.5em;
   height: 45px;
   border-radius: 12px;
   cursor: pointer;
@@ -271,4 +214,9 @@ export const ProductButton = styled.button`
   &:hover {
     filter: brightness(115%);
   }
+`;
+
+export const ProductShowed = styled.p`
+  color: #8a8890;
+  margin-bottom: 50px;
 `;

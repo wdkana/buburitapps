@@ -10,7 +10,7 @@ export const HeaderWrapper = styled.header`
   transition: 0.2s;
 
   @media (max-width: 992px) {
-    height: ${(props) => (props.height ? "80px" : "310px")};
+    height: ${(props) => (props?.height ? "80px" : "310px")};
   }
 `;
 
@@ -54,6 +54,7 @@ export const Title = styled.h1`
   font-size: 2em;
   color: #566ffe;
   font-weight: 800;
+  cursor: pointer;
 
   @media (max-width: 992px) {
     margin-top: 15px;
