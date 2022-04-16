@@ -32,7 +32,6 @@ const Header = () => {
             <Link href="/store" passHref>
               <MenuItem>Produk</MenuItem>
             </Link>
-            <MenuItem>Kategori</MenuItem>
             <MenuItem>Tentang Kami</MenuItem>
           </Menu>
           <MenuSearch>

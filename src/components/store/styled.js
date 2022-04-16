@@ -36,9 +36,11 @@ export const StoreCategoryItem = styled.div`
   text-transform: capitalize;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #636266;
 
   &:hover {
     transform: scale(1.05);
+    color: #000;
   }
 `;
 

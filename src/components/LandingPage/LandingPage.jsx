@@ -31,7 +31,8 @@ const LandingPage = () => {
   const [listProduct, setListProduct] = useState([]);
 
   const getListProduct = async () => {
-    const products = await getProduct({ page: 1 });
+    const results = await getProduct({ page: 1 });
+    const { result: products } = results;
     setListProduct(products);
   };
 
