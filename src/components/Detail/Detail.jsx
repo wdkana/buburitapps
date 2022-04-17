@@ -21,6 +21,7 @@ import {
   ButtonCalc,
   ButtonBack,
   ProductNotFound,
+  ProductHeader,
 } from "./styled";
 
 const Detail = () => {
@@ -53,14 +54,16 @@ const Detail = () => {
   return (
     <>
       <Container>
-        <Link href="/store" passHref>
-          <ButtonBack>Kembali</ButtonBack>
-        </Link>
         <Wrapper>
           {invalidData ? (
-            <ProductNotFound>
-              Produk tidak ditemukan, silahkan kembali
-            </ProductNotFound>
+            <>
+              <ProductNotFound>
+                Produk tidak ditemukan, silahkan kembali
+              </ProductNotFound>
+              <Link href="/store" passHref>
+                <ButtonBack>Kembali</ButtonBack>
+              </Link>
+            </>
           ) : (
             <>
               <WrapperRow>
@@ -69,7 +72,13 @@ const Detail = () => {
                 </ImageWrapper>
               </WrapperRow>
               <WrapperRow>
-                <ProductCategory>{product?.category}</ProductCategory>
+                <ProductHeader>
+                  <ProductCategory>{product?.category}</ProductCategory>
+                  <Link href="/store" passHref>
+                    <ButtonBack>Kembali</ButtonBack>
+                  </Link>
+                </ProductHeader>
+
                 <ProductName>{product?.title}</ProductName>
                 <Description>{product?.description}</Description>
                 <Price>${product?.price}</Price>

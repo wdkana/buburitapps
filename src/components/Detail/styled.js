@@ -41,6 +41,15 @@ export const WrapperRow = styled.div`
 
 export const ProductNotFound = styled.p`
   color: #183b56;
+  margin-right: 2em;
+`;
+
+export const ProductHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+  margin-bottom: 15px;
 `;
 
 export const ImageWrapper = styled.div`
@@ -62,7 +71,6 @@ export const ProductCategory = styled.p`
   font-weight: 500;
   font-size: 13px;
   letter-spacing: 1.5px;
-  margin-bottom: 15px;
 `;
 
 export const ProductName = styled.h2`
@@ -159,12 +167,9 @@ export const ButtonCart = styled.button`
 `;
 
 export const ButtonBack = styled.button`
-  position: absolute;
-  left: 20px;
-  top: 20px;
   border: 1px solid #566ffe;
   padding: 0 1em;
-  height: 35px;
+  height: 32px;
   border-radius: 12px;
   cursor: pointer;
   font-size: 12px;
