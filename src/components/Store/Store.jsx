@@ -70,7 +70,7 @@ const StoreComponent = () => {
           ? false
           : param?.addData;
 
-      const newData = isAddData ? { ...productsList, ...products } : products;
+      const newData = isAddData ? [...productsList, ...products] : products;
       setProductsList(newData);
       setAllDataFetched(nextPage === "-" && true);
     } catch (e) {
