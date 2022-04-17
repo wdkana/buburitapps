@@ -1,0 +1,18 @@
+{
+  "/_app": "pages/_app.js",
+  "/about": "pages/about.html",
+  "/api/firebase": "pages/api/firebase.js",
+  "/api/hello": "pages/api/hello.js",
+  "/api/prayer/[...slug]": "pages/api/prayer/[...slug].js",
+  "/api/prayer/city": "pages/api/prayer/city.js",
+  "/api/store/category": "pages/api/store/category.js",
+  "/api/store/product/[id]": "pages/api/store/product/[id].js",
+  "/api/store/product/category": "pages/api/store/product/category.js",
+  "/api/store/product": "pages/api/store/product.js",
+  "/": "pages/index.html",
+  "/store/[id]": "pages/store/[id].html",
+  "/store": "pages/store.html",
+  "/_error": "pages/_error.js",
+  "/_document": "pages/_document.js",
+  "/404": "pages/404.html"
+}
