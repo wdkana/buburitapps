@@ -24,6 +24,11 @@ export const Wrapper = styled.div`
     flex-direction: column;
     padding: 50px 100px;
   }
+
+  @media (max-width: 580px) {
+    flex-direction: column;
+    padding: 50px 40px;
+  }
 `;
 
 export const WrapperRow = styled.div`
@@ -105,6 +110,10 @@ export const Price = styled.div`
 export const ButtonWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
+
+  @media (max-width: 478px) {
+    margin-top: 20px;
+  }
 `;
 
 export const ButtonQuantity = styled.div`
@@ -121,6 +130,12 @@ export const ButtonQuantity = styled.div`
   box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 478px) {
+    width: 60%;
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
 `;
 
 export const ButtonCalc = styled.div`
@@ -163,6 +178,10 @@ export const ButtonCart = styled.button`
 
   &:hover {
     filter: brightness(115%);
+  }
+
+  @media (max-width: 478px) {
+    width: 60%;
   }
 `;
 
