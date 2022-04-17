@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const apiUrl = "http://localhost:3000";
+const apiUrl = "";
 
 const errorResponseHandler = (error) => {
   return Promise.reject(error);
