@@ -111,6 +111,11 @@ export const Image = styled.img`
   width: 200px;
   height: auto;
   border-radius: 50%;
+  transition: 0.2s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const ImageText = styled.p`
