@@ -1,6 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
+
 import { getCategories, getProduct } from "../../api/storeAPI";
 
 import {
@@ -154,6 +156,7 @@ const StoreComponent = () => {
           <ProductListWrapper>
             <ProductList>
               {productsList?.map((product, index) => {
+                console.log({ product });
                 return (
                   <ProductCol key={index}>
                     <ProductBox>
@@ -172,7 +175,9 @@ const StoreComponent = () => {
                           {product.description}
                         </ProductDetailDesc>
                       </ProductDetail>
-                      <ProductDetailButton>Detail</ProductDetailButton>
+                      <Link href={`/store/${product.id}`} passHref>
+                        <ProductDetailButton>Detail</ProductDetailButton>
+                      </Link>
                     </ProductBox>
                   </ProductCol>
                 );

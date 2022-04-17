@@ -26,7 +26,7 @@ const AboutComponent = () => {
               <ImageText>Gegy Hamdani</ImageText>
             </ImageWrapper>
             <ImageWrapper>
-              <Image src="./assets/dea.png" alt="about" />
+              <Image src="./assets/tedi.png" alt="about" />
               <ImageText>Tedi Suryadi</ImageText>
             </ImageWrapper>
           </ImageColumn>

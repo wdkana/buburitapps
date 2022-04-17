@@ -4,7 +4,7 @@ export const HeaderWrapper = styled.header`
   position: sticky;
   top: 0;
   background: #fff;
-  border-bottom: 1px solid #e2eef1;
+  border-bottom: 1px solid #c4dbe1;
   width: 100%;
   white-space: nowrap;
   height: 80px;

@@ -33,4 +33,14 @@ const getCategories = async () => {
   }
 };
 
-export { getProduct, getCategories };
+const getProductById = async (id) => {
+  try {
+    const response = await getInstance().get(routes.getProductById(id));
+    const { data } = response;
+    return data;
+  } catch (err) {
+    return err;
+  }
+};
+
+export { getProduct, getCategories, getProductById };
