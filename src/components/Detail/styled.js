@@ -153,3 +153,25 @@ export const ButtonCart = styled.button`
     filter: brightness(115%);
   }
 `;
+
+export const ButtonBack = styled.button`
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  border: 1px solid #566ffe;
+  padding: 0 1em;
+  height: 35px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: #fff;
+  color: #566ffe;
+  transition: 0.2s;
+  box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    filter: brightness(115%);
+  }
+`;

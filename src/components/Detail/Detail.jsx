@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Link from "next/link";
 import { getProductById } from "../../api/storeAPI";
 
 import {
@@ -18,6 +19,7 @@ import {
   ButtonWrapper,
   ButtonQuantity,
   ButtonCalc,
+  ButtonBack,
 } from "./styled";
 
 const Detail = () => {
@@ -47,6 +49,9 @@ const Detail = () => {
   return (
     <>
       <Container>
+        <Link href="/store" passHref>
+          <ButtonBack>Kembali</ButtonBack>
+        </Link>
         <Wrapper>
           <WrapperRow>
             <ImageWrapper>
