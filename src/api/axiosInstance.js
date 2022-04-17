@@ -25,6 +25,7 @@ const routes = {
     `/api/prayer/${city}/${year}/${month}`,
   getProducts: (query = "") => `/api/store/product?${query}`,
   getCategories: () => `/api/store/product/category`,
+  getProductById: (id = "") => `/api/store/product/${id}`,
 };
 
 export { getInstance, routes, apiUrl };

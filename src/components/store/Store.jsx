@@ -1,5 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import Link from "next/link";
+
 import { getCategories, getProduct } from "../../api/storeAPI";
 
 import {
@@ -8,6 +11,7 @@ import {
   ProductButton,
   ProductCol,
   ProductDetail,
+  ProductDetailButton,
   ProductDetailCategory,
   ProductDetailDesc,
   ProductDetailPrice,
@@ -29,18 +33,46 @@ import {
 const StoreComponent = () => {
   const [productsList, setProductsList] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [page, setPage] = useState(1);
+  const [filterOption, setFilterOption] = useState({
+    page: 1,
+    filter: "",
+    value: "",
+    addData: false,
+  });
   const [isAllDataFetched, setAllDataFetched] = useState(false);
 
-  const getProductData = async () => {
-    try {
-      const products = await getProduct({ page });
+  const router = useRouter();
+  const { isReady, pathname, query } = router;
 
-      if (products === undefined) {
-        setAllDataFetched(true);
-      } else {
-        setProductsList([...productsList, ...products]);
-      }
+  const setQueryFilter = (query) => {
+    router.push({ pathname, query }, undefined, {
+      shallow: true,
+    });
+  };
+
+  const getProductData = async (param) => {
+    try {
+      const queryParam = {
+        ...(param?.page && { page: param.page }),
+        ...(param?.filter &&
+          param?.value !== "all" && { filter: param.filter }),
+        ...(param?.value && param?.value !== "all" && { value: param.value }),
+        ...(param?.search && { search: param.search }),
+      };
+
+      const results = await getProduct(queryParam);
+      const { result: products, next_page: nextPage } = results;
+
+      const isAddData =
+        param?.addData === "true"
+          ? true
+          : param?.addData === "false"
+          ? false
+          : param?.addData;
+
+      const newData = isAddData ? [...productsList, ...products] : products;
+      setProductsList(newData);
+      setAllDataFetched(nextPage === "-" && true);
     } catch (e) {
       console.error(e);
     }
@@ -58,16 +90,46 @@ const StoreComponent = () => {
   };
 
   const handleAddPage = () => {
-    setPage((page) => page + 1);
+    const newQuery = {
+      ...filterOption,
+      page: filterOption.page ? filterOption.page + 1 : 2,
+      addData: true,
+    };
+
+    setFilterOption(newQuery);
+    getProductData(newQuery);
   };
 
-  useEffect(() => {
-    getProductData();
-  }, [page]);
+  const handleChangeCategories = (e) => {
+    const {
+      target: { innerHTML },
+    } = e;
+
+    const newQuery = {
+      ...filterOption,
+      filter: "category",
+      value: innerHTML,
+      addData: false,
+    };
+
+    delete newQuery.page;
+
+    setFilterOption(newQuery);
+    setQueryFilter(newQuery);
+  };
 
   useEffect(() => {
     getCategoriesData();
   }, []);
+
+  useEffect(() => {
+    if (isReady && Object.keys(query).length === 0) {
+      getProductData();
+    }
+    if (isReady && Object.keys(query).length > 0) {
+      getProductData(query);
+    }
+  }, [isReady, query]);
 
   return (
     <>
@@ -78,17 +140,23 @@ const StoreComponent = () => {
         <StoreCategory>
           {categories?.map((val, i) => {
             return (
-              <StoreCategoryItem key={i}>{val.category}</StoreCategoryItem>
+              <StoreCategoryItem
+                key={i}
+                onClick={handleChangeCategories}
+                value={val.category}>
+                {val.category}
+              </StoreCategoryItem>
             );
           })}
         </StoreCategory>
       </StoreCategoryWrapper>
-      <Container color="#ecf1f9" zIndex="0">
+      <Container>
         <ProductWrapper>
           <ProductTitle>Semua Produk</ProductTitle>
           <ProductListWrapper>
             <ProductList>
               {productsList?.map((product, index) => {
+                console.log({ product });
                 return (
                   <ProductCol key={index}>
                     <ProductBox>
@@ -107,6 +175,9 @@ const StoreComponent = () => {
                           {product.description}
                         </ProductDetailDesc>
                       </ProductDetail>
+                      <Link href={`/store/${product.id}`} passHref>
+                        <ProductDetailButton>Detail</ProductDetailButton>
+                      </Link>
                     </ProductBox>
                   </ProductCol>
                 );

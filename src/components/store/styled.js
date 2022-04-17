@@ -36,9 +36,11 @@ export const StoreCategoryItem = styled.div`
   text-transform: capitalize;
   cursor: pointer;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #636266;
 
   &:hover {
     transform: scale(1.05);
+    color: #000;
   }
 `;
 
@@ -47,23 +49,23 @@ export const Container = styled.div`
   position: relative;
   width: 100%;
   min-height: 700px;
+  background-color: #ecf1f9;
+`;
+
+export const ProductWrapper = styled.div`
+  padding-top: 100px;
   padding-left: calc(${paddingSpace} / 2);
   padding-right: calc(${paddingSpace} / 2);
   margin-left: auto;
   margin-right: auto;
-  background-color: #ecf1f9;
 
   @media (max-width: 1400px) {
     max-width: 1250px;
   }
 
   @media (max-width: 768px) {
-    max-width: 800px !important;
+    max-width: 800px;
   }
-`;
-
-export const ProductWrapper = styled.div`
-  padding-top: 100px;
 `;
 
 export const ProductTitle = styled.h2`
@@ -159,7 +161,8 @@ export const ProductImage = styled.img`
 `;
 
 export const ProductDetail = styled.div`
-  padding: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid #c5d0d3;
 `;
 
 export const ProductDetailCategory = styled.p`
@@ -219,4 +222,25 @@ export const ProductButton = styled.button`
 export const ProductShowed = styled.p`
   color: #8a8890;
   margin-bottom: 50px;
+`;
+
+export const ProductDetailButton = styled.button`
+  width: 100%;
+  border: 0;
+  padding: 0 1em;
+  margin-top: 10px;
+  height: 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 0.8em;
+  background-color: #566ffe;
+  color: #fff;
+  transition: 0.2s;
+  box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+  -webkit-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+
+  &:hover {
+    filter: brightness(115%);
+  }
 `;

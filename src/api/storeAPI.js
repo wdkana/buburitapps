@@ -1,15 +1,21 @@
 import { getInstance, routes } from "./axiosInstance";
 
-const getProduct = async ({ page }) => {
+const getProduct = async ({
+  page = 1,
+  filter = "",
+  value = "",
+  search = "",
+}) => {
   const queryPage = `${page ? `page=${page}&` : ""}`;
-  const query = queryPage;
+  const queryFilter = `${filter ? `filter=${filter}&` : ""}`;
+  const queryValue = `${value ? `value=${value}&` : ""}`;
+  const querySearch = `${search ? `search=${search}&` : ""}`;
+  const query = `${queryPage}${queryFilter}${queryValue}${querySearch}`;
 
   try {
     const response = await getInstance().get(routes.getProducts(query));
-    const {
-      data: { result },
-    } = response;
-    return result;
+    const { data } = response;
+    return data;
   } catch (err) {
     return err;
   }
@@ -27,4 +33,14 @@ const getCategories = async () => {
   }
 };
 
-export { getProduct, getCategories };
+const getProductById = async (id) => {
+  try {
+    const response = await getInstance().get(routes.getProductById(id));
+    const { data } = response;
+    return data;
+  } catch (err) {
+    return err;
+  }
+};
+
+export { getProduct, getCategories, getProductById };

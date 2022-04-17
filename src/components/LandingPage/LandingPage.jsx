@@ -31,7 +31,8 @@ const LandingPage = () => {
   const [listProduct, setListProduct] = useState([]);
 
   const getListProduct = async () => {
-    const products = await getProduct({ page: 1 });
+    const results = await getProduct({ page: 1 });
+    const { result: products } = results;
     setListProduct(products);
   };
 
@@ -45,7 +46,7 @@ const LandingPage = () => {
         <Wrapper>
           <Hero>
             <HeroRow>
-              <HeroImage src="./assets/hero-1.webp" />
+              <HeroImage src="./assets/hero-1-new.png" />
             </HeroRow>
             <HeroRow>
               <Text>
