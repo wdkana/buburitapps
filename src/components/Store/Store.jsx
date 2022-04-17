@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import { useEffect, useState } from "react"
+import { useRouter } from "next/router"
+import Link from "next/link"
 
-import { getCategories, getProduct } from "../../api/storeAPI";
+import { getCategories, getProduct } from "../../api/storeAPI"
 
 import {
   Container,
@@ -28,27 +28,27 @@ import {
   StoreCategoryWrapper,
   StoreHeaderContainer,
   StoreHeaderTitle,
-} from "./styled";
+} from "./styled"
 
 const StoreComponent = () => {
-  const [productsList, setProductsList] = useState([]);
-  const [categories, setCategories] = useState([]);
+  const [productsList, setProductsList] = useState([])
+  const [categories, setCategories] = useState([])
   const [filterOption, setFilterOption] = useState({
     page: 1,
     filter: "",
     value: "",
     addData: false,
-  });
-  const [isAllDataFetched, setAllDataFetched] = useState(false);
+  })
+  const [isAllDataFetched, setAllDataFetched] = useState(false)
 
-  const router = useRouter();
-  const { isReady, pathname, query } = router;
+  const router = useRouter()
+  const { isReady, pathname, query } = router
 
   const setQueryFilter = (query) => {
     router.push({ pathname, query }, undefined, {
       shallow: true,
-    });
-  };
+    })
+  }
 
   const getProductData = async (param) => {
     try {
@@ -58,78 +58,78 @@ const StoreComponent = () => {
           param?.value !== "all" && { filter: param.filter }),
         ...(param?.value && param?.value !== "all" && { value: param.value }),
         ...(param?.search && { search: param.search }),
-      };
+      }
 
-      const results = await getProduct(queryParam);
-      const { result: products, next_page: nextPage } = results;
+      const results = await getProduct(queryParam)
+      const { result: products, next_page: nextPage } = results
 
       const isAddData =
         param?.addData === "true"
           ? true
           : param?.addData === "false"
           ? false
-          : param?.addData;
+          : param?.addData
 
-      const newData = isAddData ? [...productsList, ...products] : products;
-      setProductsList(newData);
-      setAllDataFetched(nextPage === "-" && true);
+      const newData = isAddData ? { ...productsList, ...products } : products
+      setProductsList(newData)
+      setAllDataFetched(nextPage === "-" && true)
     } catch (e) {
-      console.error(e);
+      console.error(e)
     }
-  };
+  }
 
   const getCategoriesData = async () => {
     try {
-      const categories = await getCategories();
+      const categories = await getCategories()
 
-      const allData = { category: "all" };
-      setCategories([allData, ...categories]);
+      const allData = { category: "all" }
+      setCategories([allData, ...categories])
     } catch (e) {
-      console.error(e);
+      console.error(e)
     }
-  };
+  }
 
   const handleAddPage = () => {
     const newQuery = {
       ...filterOption,
       page: filterOption.page ? filterOption.page + 1 : 2,
       addData: true,
-    };
+    }
 
-    setFilterOption(newQuery);
-    getProductData(newQuery);
-  };
+    setFilterOption(newQuery)
+    getProductData(newQuery)
+  }
 
   const handleChangeCategories = (e) => {
     const {
       target: { innerHTML },
-    } = e;
+    } = e
 
     const newQuery = {
       ...filterOption,
       filter: "category",
       value: innerHTML,
       addData: false,
-    };
+    }
 
-    delete newQuery.page;
+    delete newQuery.page
 
-    setFilterOption(newQuery);
-    setQueryFilter(newQuery);
-  };
+    setFilterOption(newQuery)
+    setQueryFilter(newQuery)
+  }
 
   useEffect(() => {
-    getCategoriesData();
-  }, []);
+    getCategoriesData()
+  }, [])
 
   useEffect(() => {
     if (isReady && Object.keys(query).length === 0) {
-      getProductData();
+      getProductData()
     }
     if (isReady && Object.keys(query).length > 0) {
-      getProductData(query);
+      getProductData(query)
     }
-  }, [isReady, query]);
+  }, [isReady, query])
 
   return (
     <>
@@ -143,10 +143,11 @@ const StoreComponent = () => {
               <StoreCategoryItem
                 key={i}
                 onClick={handleChangeCategories}
-                value={val.category}>
+                value={val.category}
+              >
                 {val.category}
               </StoreCategoryItem>
-            );
+            )
           })}
         </StoreCategory>
       </StoreCategoryWrapper>
@@ -156,7 +157,7 @@ const StoreComponent = () => {
           <ProductListWrapper>
             <ProductList>
               {productsList?.map((product, index) => {
-                console.log({ product });
+                console.log({ product })
                 return (
                   <ProductCol key={index}>
                     <ProductBox>
@@ -180,7 +181,7 @@ const StoreComponent = () => {
                       </Link>
                     </ProductBox>
                   </ProductCol>
-                );
+                )
               })}
             </ProductList>
             {isAllDataFetched ? (
@@ -194,7 +195,7 @@ const StoreComponent = () => {
         </ProductWrapper>
       </Container>
     </>
-  );
-};
+  )
+}
 
-export default StoreComponent;
+export default StoreComponent
