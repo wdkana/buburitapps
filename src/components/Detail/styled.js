@@ -39,6 +39,10 @@ export const WrapperRow = styled.div`
   }
 `;
 
+export const ProductNotFound = styled.p`
+  color: #183b56;
+`;
+
 export const ImageWrapper = styled.div`
   width: 450px;
 

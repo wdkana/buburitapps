@@ -20,11 +20,13 @@ import {
   ButtonQuantity,
   ButtonCalc,
   ButtonBack,
+  ProductNotFound,
 } from "./styled";
 
 const Detail = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(0);
+  const [invalidData, setInvalidData] = useState(false);
   const router = useRouter();
   const { id } = router.query;
 
@@ -38,8 +40,10 @@ const Detail = () => {
 
   const getProductData = async () => {
     const results = await getProductById(id);
-    const { result: data = {} } = results;
-    setProduct(data[0]);
+    const { result } = results;
+
+    if (result === "Data tidak ditemukan") return setInvalidData(true);
+    return setProduct(result[0]);
   };
 
   useEffect(() => {
@@ -53,29 +57,37 @@ const Detail = () => {
           <ButtonBack>Kembali</ButtonBack>
         </Link>
         <Wrapper>
-          <WrapperRow>
-            <ImageWrapper>
-              <Image src={product?.image} alt="product" />
-            </ImageWrapper>
-          </WrapperRow>
-          <WrapperRow>
-            <ProductCategory>{product?.category}</ProductCategory>
-            <ProductName>{product?.title}</ProductName>
-            <Description>{product?.description}</Description>
-            <Price>${product?.price}</Price>
-            <ButtonWrapper>
-              <ButtonQuantity>
-                <ButtonCalc onClick={() => handleClickQuantity(false)}>
-                  -
-                </ButtonCalc>
-                <Quantity>{quantity}</Quantity>
-                <ButtonCalc onClick={() => handleClickQuantity(true)}>
-                  +
-                </ButtonCalc>
-              </ButtonQuantity>
-              <ButtonCart>Tambah ke keranjang</ButtonCart>
-            </ButtonWrapper>
-          </WrapperRow>
+          {invalidData ? (
+            <ProductNotFound>
+              Produk tidak ditemukan, silahkan kembali
+            </ProductNotFound>
+          ) : (
+            <>
+              <WrapperRow>
+                <ImageWrapper>
+                  <Image src={product?.image} alt="product" />
+                </ImageWrapper>
+              </WrapperRow>
+              <WrapperRow>
+                <ProductCategory>{product?.category}</ProductCategory>
+                <ProductName>{product?.title}</ProductName>
+                <Description>{product?.description}</Description>
+                <Price>${product?.price}</Price>
+                <ButtonWrapper>
+                  <ButtonQuantity>
+                    <ButtonCalc onClick={() => handleClickQuantity(false)}>
+                      -
+                    </ButtonCalc>
+                    <Quantity>{quantity}</Quantity>
+                    <ButtonCalc onClick={() => handleClickQuantity(true)}>
+                      +
+                    </ButtonCalc>
+                  </ButtonQuantity>
+                  <ButtonCart>Tambah ke keranjang</ButtonCart>
+                </ButtonWrapper>
+              </WrapperRow>
+            </>
+          )}
         </Wrapper>
       </Container>
     </>
