@@ -73,7 +73,8 @@ export default function handler(req, res) {
             res.status(200).json({
                 code: 200,
                 status: "OK",
-                message: "Page tidak ditemukan"
+                message: "Page tidak ditemukan",
+                next_page: "-"
             });
         } else {
             res.status(200).json({
