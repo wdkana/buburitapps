@@ -86,23 +86,27 @@ const LandingPage = () => {
               {listProduct.map((product, index) => {
                 return (
                   <ProductCol key={index}>
-                    <ProductBox>
-                      <ProductImageWrapper>
-                        <ProductImage src={product.image} />
-                      </ProductImageWrapper>
-                      <ProductDetail>
-                        <ProductDetailCategory>
-                          {product.category}
-                        </ProductDetailCategory>
-                        <ProductDetailTitle>{product.title}</ProductDetailTitle>
-                        <ProductDetailPrice>
-                          {product.price}$
-                        </ProductDetailPrice>
-                        <ProductDetailDesc>
-                          {product.description}
-                        </ProductDetailDesc>
-                      </ProductDetail>
-                    </ProductBox>
+                    <Link href={`/store/${product.id}`} passHref>
+                      <ProductBox>
+                        <ProductImageWrapper>
+                          <ProductImage src={product.image} />
+                        </ProductImageWrapper>
+                        <ProductDetail>
+                          <ProductDetailCategory>
+                            {product.category}
+                          </ProductDetailCategory>
+                          <ProductDetailTitle>
+                            {product.title}
+                          </ProductDetailTitle>
+                          <ProductDetailPrice>
+                            {product.price}$
+                          </ProductDetailPrice>
+                          <ProductDetailDesc>
+                            {product.description}
+                          </ProductDetailDesc>
+                        </ProductDetail>
+                      </ProductBox>
+                    </Link>
                   </ProductCol>
                 );
               })}
