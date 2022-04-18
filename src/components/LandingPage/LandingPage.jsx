@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 
-import { getProduct } from "../../api/storeAPI.js";
+import { getProduct } from "../../api/storeAPI";
+import { getRandomInt } from "../../helpers/number";
 
 import {
   Container,
@@ -31,9 +32,23 @@ const LandingPage = () => {
   const [listProduct, setListProduct] = useState([]);
 
   const getListProduct = async () => {
-    const results = await getProduct({ page: 1 });
-    const { result: products } = results;
-    setListProduct(products);
+    const [resultFirstPage, resultSecondPage, resultThirdPage] =
+      await Promise.all([
+        getProduct({ page: 1 }),
+        getProduct({ page: 2 }),
+        getProduct({ page: 3 }),
+      ]);
+
+    const { result: firstPageProduct } = resultFirstPage || [];
+    const { result: secondPageProduct } = resultSecondPage || [];
+    const { result: thirdPageProduct } = resultThirdPage || [];
+
+    const productData =
+      [...firstPageProduct, ...secondPageProduct, ...thirdPageProduct] || [];
+
+    const getFirstItem = getRandomInt(0, productData.length - 8);
+    const sliceProduct = productData.slice(getFirstItem, getFirstItem + 8);
+    setListProduct(sliceProduct);
   };
 
   useEffect(() => {
