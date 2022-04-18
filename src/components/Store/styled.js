@@ -136,6 +136,7 @@ export const ProductBox = styled.div`
   max-width: 30rem;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
 
   @media (max-width: 768px) {
     margin-left: auto;
@@ -174,7 +175,6 @@ export const ProductImage = styled.img`
 
 export const ProductDetail = styled.div`
   padding: 14px 0;
-  border-bottom: 1px solid #c5d0d3;
 `;
 
 export const ProductDetailCategory = styled.p`
