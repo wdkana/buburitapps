@@ -1,7 +1,7 @@
-import { useState } from "react"
-import Link from "next/link"
-import { useRouter } from "next/router"
-import { FaGripLines } from "react-icons/fa"
+import { useState } from "react";
+import Link from "next/link";
+import { useRouter } from "next/router";
+import { FaGripLines } from "react-icons/fa";
 
 import {
   Container,
@@ -12,36 +12,35 @@ import {
   MenuSearch,
   Title,
   Wrapper,
-} from "./styled"
-import styled from "./index.module.css"
+} from "./styled";
+import styled from "./index.module.css";
 
 const Header = () => {
-  const [isShrinkHeader, setIsShrinkHeader] = useState(true)
+  const [isShrinkHeader, setIsShrinkHeader] = useState(true);
   const [filterOption, setFilterOption] = useState({
     search: "",
     addData: false,
-  })
+  });
 
-  const router = useRouter()
+  const router = useRouter();
 
   const handleSearchSubmit = (e) => {
-    e.preventDefault()
-    if (filterOption.search === "") return
-    console.log({ filterOption })
-    router.push({ pathname: "/store", query: filterOption }, undefined)
-  }
+    e.preventDefault();
+    if (filterOption.search === "") return;
+    router.push({ pathname: "/store", query: filterOption }, undefined);
+  };
 
   const handleSearch = (e) => {
     const newQuery = {
       ...filterOption,
       search: e.target.value,
-    }
-    setFilterOption(newQuery)
-  }
+    };
+    setFilterOption(newQuery);
+  };
 
   const toggleShrinkHeader = () => {
-    setIsShrinkHeader((state) => !state)
-  }
+    setIsShrinkHeader((state) => !state);
+  };
 
   return (
     <HeaderWrapper height={`${isShrinkHeader}`}>
@@ -73,7 +72,7 @@ const Header = () => {
         </Wrapper>
       </Container>
     </HeaderWrapper>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
