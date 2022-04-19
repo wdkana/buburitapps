@@ -58,12 +58,12 @@ export default function handler(req, res) {
                 next_page = 2
             }
         } else if (page == 1 && filter === undefined && search !== undefined || page == undefined && filter === undefined && search !== undefined) {
-            const datas = data.products.filter(product => { return product.title == search })
+            const datas = data.products.filter(product => { return product.title.includes(search) })
             total_page = Math.ceil(datas.length / 8)
             dataProduct = datas.slice(0, 8)
             next_page = 2
         } else if (page > 1 && page <= total_page && search !== undefined && filter === undefined) {
-            const datas = data.products.filter(product => { return product.title == search })
+            const datas = data.products.filter(product => { return product.title.includes(search) })
             total_page = Math.ceil(datas.length / 8)
             dataProduct = datas.slice(`${(page * 8) - 8}`, `${page * 8}`)
             next_page = page + 1
