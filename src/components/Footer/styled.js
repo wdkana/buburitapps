@@ -58,19 +58,19 @@ export const Menu = styled.div`
   }
 `;
 
-export const SubTitle = styled.h3`
+export const SubTitle = styled.h2`
   letter-spacing: 4px;
   line-height: 1.2;
-  font-size: 1em;
+  font-size: 18px;
   color: #183b56;
   font-weight: 800;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
 `;
 
 export const Item = styled.p`
-  font-size: 0.9em;
+  font-size: 14px;
   color: #183b56;
-  margin-bottom: 12px;
+  margin-bottom: 18px;
   cursor: pointer;
   transition: 0.2s;
 

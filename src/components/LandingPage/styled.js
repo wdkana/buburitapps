@@ -16,23 +16,15 @@ export const Container = styled.div`
     position: absolute;
     right: 0;
     background: url(${(props) => props.src});
-    width: 310px;
+    width: 20%;
     height: 100%;
     background-repeat: no-repeat;
     background-size: contain;
     z-index: -1;
     box-sizing: border-box;
 
-    @media (max-width: 1400px) {
-      width: 285px;
-    }
-
     @media (max-width: 992px) {
-      width: 500px;
-    }
-
-    @media (max-width: 635px) {
-      width: 350px;
+      width: 55%;
     }
   }
 `;
@@ -48,10 +40,6 @@ export const Wrapper = styled.div`
   margin-right: auto;
   margin-top: ${(props) => props.mt};
 
-  @media (max-width: 1400px) {
-    max-width: 1250px;
-  }
-
   @media (max-width: 768px) {
     max-width: 800px !important;
   }
@@ -64,6 +52,7 @@ export const Hero = styled.div`
   align-items: center;
   flex-direction: row;
   justify-content: center;
+  width: 100%;
 
   @media (max-width: 992px) {
     flex-direction: column-reverse;
@@ -71,37 +60,38 @@ export const Hero = styled.div`
 `;
 
 export const HeroRow = styled.div`
-  max-width: 100%;
-  flex-shrink: 0;
   width: 100%;
+  height: 100%;
+  min-height: inherit;
+  display: flex;
+  align-items: center;
 
-  @media (min-width: 992px) {
-    flex: 0 0 auto;
-    width: 50%;
+  @media (max-width: 992px) {
+    min-height: 0;
   }
 `;
 
-export const HeroImage = styled.img`
-  width: 85%;
-  max-width: 100%;
-  height: auto;
-  user-select: none;
-  vertical-align: middle;
-  padding-left: 40px;
+export const HeroImage = styled.div`
+  min-height: inherit;
+  width: 100%;
+  position: relative;
 
-  @media (max-width: 1270px) {
-    width: 100%;
-    padding-left: 20px;
-    padding-left: 0;
+  & > span {
+    width: 100% !important;
+    min-height: inherit !important;
+
+    @media (max-width: 992px) {
+      width: 134% !important;
+      left: -17%;
+    }
   }
 `;
 
 export const Text = styled.div`
-  padding: 100px 0;
-  margin-left: 50px;
+  margin-left: 8px;
+  margin-right: 24px;
 
   @media (max-width: 992px) {
-    margin: 0 40px;
     padding-top: 60px;
     padding-bottom: 20px;
   }
@@ -110,7 +100,7 @@ export const Text = styled.div`
 export const Title = styled.h1`
   letter-spacing: 4px;
   line-height: 1.2;
-  font-size: 2.5em;
+  font-size: 38px;
   color: #183b56;
   font-weight: 800;
 `;
@@ -118,7 +108,7 @@ export const Title = styled.h1`
 export const SubTitle = styled.p`
   font-size: 16px;
   line-height: 1.6;
-  color: #6f7d95;
+  color: #4d596e;
   max-width: 37.5rem;
   margin: 16px 0;
 `;
@@ -201,6 +191,18 @@ export const ProductImageWrapper = styled.div`
 
   @media (min-width: 768px) AND (max-width: 992px) {
     width: 80%;
+  }
+
+  & > span {
+    width: 100% !important;
+    max-width: inherit;
+    position: absolute !important;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    -moz-transform: translate(-50%, -50%) scale(1);
+    -o-transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%) scale(1);
   }
 `;
 

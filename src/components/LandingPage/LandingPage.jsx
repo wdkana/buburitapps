@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 import { getProduct } from "../../api/storeAPI";
 import { getRandomInt } from "../../helpers/number";
@@ -14,7 +15,6 @@ import {
   ProductList,
   ProductBox,
   ProductButton,
-  ProductImage,
   ProductImageWrapper,
   ProductDetailTitle,
   ProductDetail,
@@ -48,6 +48,7 @@ const LandingPage = () => {
 
     const getFirstItem = getRandomInt(0, productData.length - 8);
     const sliceProduct = productData.slice(getFirstItem, getFirstItem + 8);
+
     setListProduct(sliceProduct);
   };
 
@@ -61,7 +62,16 @@ const LandingPage = () => {
         <Wrapper>
           <Hero>
             <HeroRow>
-              <HeroImage src="./assets/hero-1-new.png" />
+              <HeroImage>
+                <Image
+                  src="/assets/hero-1-new.png"
+                  alt="hero"
+                  width="100%"
+                  height="100%"
+                  layout="responsive"
+                  objectFit="contain"
+                />
+              </HeroImage>
             </HeroRow>
             <HeroRow>
               <Text>
@@ -89,7 +99,14 @@ const LandingPage = () => {
                     <Link href={`/store/${product.id}`} passHref>
                       <ProductBox>
                         <ProductImageWrapper>
-                          <ProductImage src={product.image} />
+                          <Image
+                            src={product.image}
+                            alt="product"
+                            width="100%"
+                            height="100%"
+                            layout="responsive"
+                            objectFit="contain"
+                          />
                         </ProductImageWrapper>
                         <ProductDetail>
                           <ProductDetailCategory>
