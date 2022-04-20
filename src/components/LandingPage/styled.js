@@ -206,18 +206,6 @@ export const ProductImageWrapper = styled.div`
   }
 `;
 
-export const ProductImage = styled.img`
-  width: 100%;
-  max-width: inherit;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-  -moz-transform: translate(-50%, -50%) scale(1);
-  -o-transform: translate(-50%, -50%) scale(1);
-  transform: translate(-50%, -50%) scale(1);
-`;
-
 export const ProductDetail = styled.div`
   padding: 14px;
 `;
