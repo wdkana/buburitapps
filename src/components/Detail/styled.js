@@ -132,7 +132,7 @@ export const ButtonQuantity = styled.div`
   -moz-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
 
   @media (max-width: 478px) {
-    width: 60%;
+    width: 65%;
     margin-right: 0;
     margin-bottom: 20px;
   }
@@ -171,7 +171,7 @@ export const ButtonCart = styled.button`
   font-size: 1em;
   background-color: #566ffe;
   color: #fff;
-  transition: 0.2s;
+  transition: 0.6s;
   box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
@@ -180,8 +180,15 @@ export const ButtonCart = styled.button`
     filter: brightness(115%);
   }
 
+  &:disabled {
+    cursor: inherit;
+    filter: brightness(1);
+    background: #dddddd;
+    color: #7e7b7b;
+  }
+
   @media (max-width: 478px) {
-    width: 60%;
+    width: 65%;
   }
 `;
 
@@ -198,6 +205,7 @@ export const ButtonBack = styled.button`
   box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
   -webkit-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 2px 5px 8px 1px rgba(0, 0, 0, 0.2);
+  z-index: 1;
 
   &:hover {
     filter: brightness(115%);

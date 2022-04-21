@@ -21,7 +21,7 @@ export const Container = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
-  padding: 0 100px;
+  padding: 0 60px;
   margin-left: auto;
   margin-right: auto;
 
@@ -31,11 +31,7 @@ export const Container = styled.div`
 
   @media (max-width: 992px) {
     max-width: 800px;
-    padding: 0 50px;
-  }
-
-  @media (max-width: 768px) {
-    max-width: 800px;
+    padding: 0 40px;
   }
 `;
 
@@ -92,7 +88,18 @@ export const MenuItem = styled.li`
   }
 `;
 
-export const MenuSearch = styled.div`
+export const RightMenu = styled.div`
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+
+  @media (max-width: 992px) {
+    margin-left: 0;
+    width: 99%;
+  }
+`;
+
+export const Search = styled.div`
   width: 250px;
   background: none;
   border: 1px solid #91a0a4;
@@ -106,11 +113,43 @@ export const MenuSearch = styled.div`
   }
 `;
 
+export const Cart = styled.div`
+  margin-left: ${(props) => props.ml};
+  margin-right: ${(props) => props.mr};
+  width: ${(props) => props.width};
+  height: auto;
+  cursor: pointer;
+  position: relative;
+
+  @media screen and (max-width: 992px) {
+    display: ${(props) => props.displayMobile};
+  }
+`;
+
+export const CartItemCount = styled.div`
+  position: absolute;
+  background-color: #e02954;
+  font-size: 12px;
+  width: 18px;
+  height: 18px;
+  font-weight: bold;
+  border-radius: 50%;
+  color: white;
+  z-index: 2;
+  right: -8px;
+  top: -8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
 export const MenuBurger = styled.div`
   display: none;
 
   @media screen and (max-width: 992px) {
-    display: block;
+    display: flex;
+    display: flex;
+    align-items: center;
     position: absolute;
     right: 0;
     top: 1.5em;
