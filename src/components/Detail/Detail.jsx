@@ -1,8 +1,12 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Link from "next/link";
+
 import { getProductById } from "../../api/storeAPI";
+import { Context } from "../../globalState/store";
+import { ADD_ITEM } from "../../globalState/types";
+import { cartModel } from "../../models/cart";
 
 import {
   Container,
@@ -23,13 +27,68 @@ import {
   ProductNotFound,
   ProductHeader,
 } from "./styled";
+import Modal from "../Modal/Modal";
 
 const Detail = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(0);
   const [invalidData, setInvalidData] = useState(false);
+  const [isShowModal, setShowModal] = useState(false);
   const router = useRouter();
   const { id } = router.query;
+  const [state, dispatch] = useContext(Context);
+
+  const toggleShowModal = () => {
+    setShowModal((state) => !state);
+  };
+
+  const handleAddCart = () => {
+    const selectedProduct = { ...product, quantity };
+    const duplicateStateCart = { ...state.cart };
+
+    const productOnCart = duplicateStateCart.item.find(
+      (val) => val.id == selectedProduct.id
+    );
+
+    let cart = cartModel;
+    const totalItemOnCart = duplicateStateCart.totalItem;
+
+    if (productOnCart) {
+      const increateQuantitySelectedProduct = {
+        ...productOnCart,
+        quantity: productOnCart.quantity + quantity,
+      };
+
+      const findIndex = duplicateStateCart.item.findIndex(
+        (val) => val.id === increateQuantitySelectedProduct.id
+      );
+
+      duplicateStateCart.item[findIndex] = increateQuantitySelectedProduct;
+
+      cart = {
+        ...duplicateStateCart,
+        item: [...duplicateStateCart.item],
+      };
+    } else {
+      cart = {
+        item: [...duplicateStateCart.item, { ...selectedProduct }],
+        totalItem: +totalItemOnCart + 1,
+      };
+    }
+
+    dispatch({
+      type: ADD_ITEM,
+      payload: cart,
+    });
+
+    setQuantity(0);
+
+    toggleShowModal();
+
+    setTimeout(() => {
+      toggleShowModal();
+    }, 2000);
+  };
 
   const handleClickQuantity = (increment) => {
     if (increment) {
@@ -55,6 +114,7 @@ const Detail = () => {
     <>
       <Container>
         <Wrapper>
+          <Modal text="Produk berhasil ditambahkan" isOpen={isShowModal} />
           {invalidData ? (
             <>
               <ProductNotFound>
@@ -92,7 +152,9 @@ const Detail = () => {
                       +
                     </ButtonCalc>
                   </ButtonQuantity>
-                  <ButtonCart>Tambah ke keranjang</ButtonCart>
+                  <ButtonCart disabled={quantity === 0} onClick={handleAddCart}>
+                    Tambah ke keranjang
+                  </ButtonCart>
                 </ButtonWrapper>
               </WrapperRow>
             </>
