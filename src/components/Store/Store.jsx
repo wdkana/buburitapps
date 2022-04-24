@@ -11,7 +11,6 @@ import {
   ProductButton,
   ProductCol,
   ProductDetail,
-  ProductDetailButton,
   ProductDetailCategory,
   ProductDetailDesc,
   ProductDetailPrice,
