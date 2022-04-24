@@ -1,9 +1,11 @@
 import React, { createContext, useReducer } from "react";
 import Reducer from "./reducer";
 import { cartModel } from "../models/cart";
+import { modalModel } from "../models/modal";
 
 const initialState = {
-  ...cartModel,
+  cart: { ...cartModel() },
+  modal: { ...modalModel() },
 };
 
 const Store = ({ children }) => {

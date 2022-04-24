@@ -5,8 +5,9 @@ import Link from "next/link";
 
 import { getProductById } from "../../api/storeAPI";
 import { Context } from "../../globalState/store";
-import { ADD_ITEM } from "../../globalState/types";
+import { HANDLE_ITEM, HANDLE_MODAL } from "../../globalState/types";
 import { cartModel } from "../../models/cart";
+import { modalModel } from "../../models/modal";
 
 import {
   Container,
@@ -27,20 +28,14 @@ import {
   ProductNotFound,
   ProductHeader,
 } from "./styled";
-import Modal from "../Modal/Modal";
 
 const Detail = () => {
   const [product, setProduct] = useState({});
   const [quantity, setQuantity] = useState(0);
   const [invalidData, setInvalidData] = useState(false);
-  const [isShowModal, setShowModal] = useState(false);
   const router = useRouter();
   const { id } = router.query;
   const [state, dispatch] = useContext(Context);
-
-  const toggleShowModal = () => {
-    setShowModal((state) => !state);
-  };
 
   const handleAddCart = () => {
     const selectedProduct = { ...product, quantity };
@@ -50,44 +45,57 @@ const Detail = () => {
       (val) => val.id == selectedProduct.id
     );
 
-    let cart = cartModel;
-    const totalItemOnCart = duplicateStateCart.totalItem;
+    let cart = cartModel();
 
     if (productOnCart) {
-      const increateQuantitySelectedProduct = {
+      const totalQuantity = productOnCart.quantity + quantity;
+      const totalPrice = +productOnCart.price * +totalQuantity;
+
+      const updateSelectedProduct = {
         ...productOnCart,
-        quantity: productOnCart.quantity + quantity,
+        quantity: totalQuantity,
+        totalPrice,
       };
 
       const findIndex = duplicateStateCart.item.findIndex(
-        (val) => val.id === increateQuantitySelectedProduct.id
+        (val) => val.id === updateSelectedProduct.id
       );
 
-      duplicateStateCart.item[findIndex] = increateQuantitySelectedProduct;
+      duplicateStateCart.item[findIndex] = updateSelectedProduct;
 
       cart = {
         ...duplicateStateCart,
         item: [...duplicateStateCart.item],
       };
     } else {
+      const totalItemOnCart = duplicateStateCart.totalItem;
+      const totalPrice = +selectedProduct.price * +quantity;
+
+      const updateTotalPriceSelectedProduct = {
+        ...selectedProduct,
+        totalPrice,
+      };
+
       cart = {
-        item: [...duplicateStateCart.item, { ...selectedProduct }],
+        item: [
+          ...duplicateStateCart.item,
+          { ...updateTotalPriceSelectedProduct },
+        ],
         totalItem: +totalItemOnCart + 1,
       };
     }
 
+    setQuantity(0);
+
     dispatch({
-      type: ADD_ITEM,
+      type: HANDLE_ITEM,
       payload: cart,
     });
 
-    setQuantity(0);
-
-    toggleShowModal();
-
-    setTimeout(() => {
-      toggleShowModal();
-    }, 2000);
+    dispatch({
+      type: HANDLE_MODAL,
+      payload: modalModel(true, "Produk berhasil ditambahkan ke keranjang"),
+    });
   };
 
   const handleClickQuantity = (increment) => {
@@ -114,7 +122,6 @@ const Detail = () => {
     <>
       <Container>
         <Wrapper>
-          <Modal text="Produk berhasil ditambahkan" isOpen={isShowModal} />
           {invalidData ? (
             <>
               <ProductNotFound>

@@ -14,7 +14,7 @@ export const StoreHeaderTitle = styled.h1`
   text-align: center;
   letter-spacing: 2px;
   line-height: 1.2;
-  font-size: 3em;
+  font-size: 40px;
   color: #183b56;
   font-weight: 800;
 `;
@@ -81,7 +81,7 @@ export const ProductWrapper = styled.div`
 `;
 
 export const ProductTitle = styled.h2`
-  font-size: 2em;
+  font-size: 32px;
   color: #183b56;
   font-weight: 700;
   padding-left: 10px;

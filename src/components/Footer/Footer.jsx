@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Link from "next/link";
 
 import {
@@ -63,4 +64,4 @@ const FooterComponent = () => {
   );
 };
 
-export default FooterComponent;
+export default memo(FooterComponent);

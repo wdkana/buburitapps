@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 import { Context } from "../../globalState/store";
 
@@ -27,7 +28,9 @@ const FloatingCart = ({ isOpen }) => {
     <Container isOpen={isOpen}>
       <Header>
         <HeaderText>Keranjang ({totalItem})</HeaderText>
-        <HeaderButton>Lihat semua keranjang</HeaderButton>
+        <Link href={`/cart`} passHref>
+          <HeaderButton>Lihat semua keranjang</HeaderButton>
+        </Link>
       </Header>
       <Content>
         <ProductList>
