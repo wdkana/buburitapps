@@ -69,6 +69,8 @@ export const ProductItem = styled.div`
 
   :nth-last-child(1) {
     border: none;
+    margin-bottom: 0;
+    padding-bottom: 6px;
   }
 `;
 

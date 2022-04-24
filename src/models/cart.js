@@ -1,3 +1,4 @@
-export const cartModel = {
-  cart: { totalItem: 0, item: [] },
-};
+export const cartModel = (totalItem = 0, item = []) => ({
+  totalItem,
+  item,
+});

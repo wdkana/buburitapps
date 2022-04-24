@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useState, useContext, memo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaGripLines } from "react-icons/fa";
@@ -120,4 +120,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default memo(Header);
