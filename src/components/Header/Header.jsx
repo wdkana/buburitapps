@@ -5,7 +5,7 @@ import { FaGripLines } from "react-icons/fa";
 import Image from "next/image";
 
 import { Context } from "../../globalState/store";
-import FloatingCart from "../FloatingCart/FloatingCart";
+import FloatingCart from "../FloatingCart";
 
 import {
   Container,

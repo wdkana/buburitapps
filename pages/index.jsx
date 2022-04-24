@@ -1,6 +1,6 @@
-import Header from "../src/components/Header/Header";
-import LandingPage from "../src/components/LandingPage/LandingPage";
-import FooterComponent from "../src/components/Footer/Footer";
+import Header from "../src/components/Header";
+import LandingPage from "../src/components/LandingPage";
+import FooterComponent from "../src/components/Footer";
 
 const Home = () => {
   return (
