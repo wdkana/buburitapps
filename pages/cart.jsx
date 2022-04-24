@@ -1,8 +1,7 @@
 import { useRef } from "react";
 
 import CartComponent from "../src/components/Cart";
-import FooterComponent from "../src/components/Footer";
-import Header from "../src/components/Header";
+import Template from "../src/components/Template";
 import useTrackToBottom from "../src/hooks/useTrackBottom";
 
 const Cart = () => {
@@ -11,11 +10,11 @@ const Cart = () => {
 
   return (
     <div ref={refContainer}>
-      <Header />
       <CartComponent isScrollBottom={isScrollBottom} />
-      <FooterComponent />
     </div>
   );
 };
+
+Cart.layout = Template;
 
 export default Cart;

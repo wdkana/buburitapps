@@ -1,3 +1,4 @@
+import React from "react";
 import Head from "next/head";
 import Store from "../src/globalState/store";
 import Modal from "../src/components/Modal/Modal";
@@ -6,6 +7,8 @@ import "../styles/globals.css";
 import "swiper/css";
 
 function MyApp({ Component, pageProps }) {
+  const Layout = Component.layout || React.Fragment;
+
   return (
     <>
       <Head>
@@ -14,8 +17,10 @@ function MyApp({ Component, pageProps }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Store>
-        <Modal />
-        <Component {...pageProps} />
+        <Layout>
+          <Modal />
+          <Component {...pageProps} />
+        </Layout>
       </Store>
     </>
   );
