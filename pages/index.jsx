@@ -1,15 +1,14 @@
-import Header from "../src/components/Header";
 import LandingPage from "../src/components/LandingPage";
-import FooterComponent from "../src/components/Footer";
+import Template from "../src/components/Template";
 
 const Home = () => {
   return (
     <>
-      <Header />
       <LandingPage />
-      <FooterComponent />
     </>
   );
 };
+
+Home.layout = Template;
 
 export default Home;

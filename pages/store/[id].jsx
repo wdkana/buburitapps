@@ -1,15 +1,14 @@
-import Header from "../../src/components/Header";
 import Detail from "../../src/components/Detail";
-import FooterComponent from "../../src/components/Footer";
+import Template from "../../src/components/Template";
 
 const DetailProductPage = () => {
   return (
     <>
-      <Header />
       <Detail />
-      <FooterComponent />
     </>
   );
 };
+
+DetailProductPage.layout = Template;
 
 export default DetailProductPage;

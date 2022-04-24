@@ -1,15 +1,14 @@
-import Header from "../src/components/Header";
 import AboutComponent from "../src/components/About";
-import FooterComponent from "../src/components/Footer";
+import Template from "../src/components/Template";
 
 const About = () => {
   return (
     <>
-      <Header />
       <AboutComponent />
-      <FooterComponent />
     </>
   );
 };
+
+About.layout = Template;
 
 export default About;

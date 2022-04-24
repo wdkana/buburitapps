@@ -1,15 +1,14 @@
 import Store from "../../src/components/Store";
-import Header from "../../src/components/Header";
-import FooterComponent from "../../src/components/Footer";
+import Template from "../../src/components/Template";
 
 const StorePage = () => {
   return (
     <>
-      <Header />
       <Store />
-      <FooterComponent />
     </>
   );
 };
+
+StorePage.layout = Template;
 
 export default StorePage;
