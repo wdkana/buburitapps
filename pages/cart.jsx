@@ -1,8 +1,8 @@
 import { useRef } from "react";
 
-import CartComponent from "../src/components/Cart/Cart";
-import FooterComponent from "../src/components/Footer/Footer";
-import Header from "../src/components/Header/Header";
+import CartComponent from "../src/components/Cart";
+import FooterComponent from "../src/components/Footer";
+import Header from "../src/components/Header";
 import useTrackToBottom from "../src/hooks/useTrackBottom";
 
 const Cart = () => {

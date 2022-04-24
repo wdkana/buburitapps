@@ -1,6 +1,6 @@
-import Header from "../src/components/Header/Header";
-import AboutComponent from "../src/components/About/About";
-import FooterComponent from "../src/components/Footer/Footer";
+import Header from "../src/components/Header";
+import AboutComponent from "../src/components/About";
+import FooterComponent from "../src/components/Footer";
 
 const About = () => {
   return (

@@ -1,4 +1,5 @@
 import { useContext, useEffect } from "react";
+
 import { Context } from "../../globalState/store";
 import { HANDLE_MODAL } from "../../globalState/types";
 import { modalModel } from "../../models/modal";

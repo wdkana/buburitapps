@@ -1,6 +1,6 @@
-import Header from "../../src/components/Header/Header";
-import Detail from "../../src/components/Detail/Detail";
-import FooterComponent from "../../src/components/Footer/Footer";
+import Header from "../../src/components/Header";
+import Detail from "../../src/components/Detail";
+import FooterComponent from "../../src/components/Footer";
 
 const DetailProductPage = () => {
   return (
