@@ -1,4 +1,4 @@
-import { useState, useContext, memo } from "react";
+import { useState, useContext, useEffect, memo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { FaGripLines } from "react-icons/fa";
@@ -54,6 +54,18 @@ const Header = () => {
     setIsShowCart((state) => !state);
   };
 
+  useEffect(() => {
+    const handleRouteChange = () => {
+      if (isShowCart) toggleShowCart();
+    };
+
+    router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [isShowCart]);
+
   return (
     <HeaderWrapper height={`${isShrinkHeader}`}>
       <Container>
@@ -98,7 +110,7 @@ const Header = () => {
             </Cart>
           </RightMenu>
           <MenuBurger>
-            <Cart mr="24px" width="24px" onClick={() => toggleShowCart()}>
+            <Cart mr="24px" width="24px" onClick={toggleShowCart}>
               {state.cart.totalItem > 0 && (
                 <CartItemCount>{state.cart.totalItem}</CartItemCount>
               )}

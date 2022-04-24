@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
 
 import { Context } from "../../globalState/store";
-import { HANDLE_MODAL } from "../../globalState/types";
+import { handleActionModal } from "../../globalState/action";
 import { modalModel } from "../../models/modal";
 
 import { Container } from "./styled";
@@ -14,10 +14,7 @@ const Modal = () => {
   useEffect(() => {
     if (isShowModal) {
       setTimeout(() => {
-        dispatch({
-          type: HANDLE_MODAL,
-          payload: modalModel(false, ""),
-        });
+        handleActionModal(modalModel(false, ""))(dispatch);
       }, 2000);
     }
   }, [isShowModal]);

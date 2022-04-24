@@ -58,7 +58,7 @@ const LandingPage = () => {
 
   return (
     <>
-      <Container src="./assets/hero-new.webp" color="#fff" zIndex="1">
+      <Container src="/assets/hero-new.webp" color="#fff" zIndex="1">
         <Wrapper>
           <Hero>
             <HeroRow>
@@ -70,6 +70,7 @@ const LandingPage = () => {
                   height="100%"
                   layout="responsive"
                   objectFit="contain"
+                  priority
                 />
               </HeroImage>
             </HeroRow>

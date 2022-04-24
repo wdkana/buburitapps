@@ -17,16 +17,16 @@ const AboutComponent = () => {
         <Title>Tentang Kami</Title>
         <ImageContainer>
           <ImageWrapper>
-            <Image src="./assets/dea.png" alt="about" />
+            <Image src="/assets/dea.png" alt="about" />
             <ImageText>Dea Afrizal</ImageText>
           </ImageWrapper>
           <ImageColumn>
             <ImageWrapper mr="6em">
-              <Image src="./assets/gegy.jpeg" alt="about" />
+              <Image src="/assets/gegy.jpeg" alt="about" />
               <ImageText>Gegy Hamdani</ImageText>
             </ImageWrapper>
             <ImageWrapper>
-              <Image src="./assets/tedi.png" alt="about" />
+              <Image src="/assets/tedi.png" alt="about" />
               <ImageText>Tedi Suryadi</ImageText>
             </ImageWrapper>
           </ImageColumn>

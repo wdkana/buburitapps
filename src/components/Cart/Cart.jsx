@@ -3,9 +3,9 @@ import Image from "next/image";
 import { FaPlusCircle, FaMinusCircle, FaTrash } from "react-icons/fa";
 
 import { Context } from "../../globalState/store";
-import { HANDLE_ITEM, HANDLE_MODAL } from "../../globalState/types";
 import { modalModel } from "../../models/modal";
 import { cartModel } from "../../models/cart";
+import { handleActionItem, handleActionModal } from "../../globalState/action";
 
 import {
   ButtonAction,
@@ -60,15 +60,9 @@ const CartComponent = ({ isScrollBottom }) => {
       totalItem: duplicateStateCart.totalItem - 1,
     };
 
-    dispatch({
-      type: HANDLE_ITEM,
-      payload: updateCart,
-    });
+    handleActionItem(updateCart)(dispatch);
 
-    dispatch({
-      type: HANDLE_MODAL,
-      payload: modalModel(true, "Produk berhasil dihapus"),
-    });
+    handleActionModal(modalModel(true, "Produk berhasil dihapus"))(dispatch);
   };
 
   const handleClickQuantity = (increment, id) => {
@@ -106,10 +100,7 @@ const CartComponent = ({ isScrollBottom }) => {
       item: [...duplicateStateCart.item],
     };
 
-    dispatch({
-      type: HANDLE_ITEM,
-      payload: cart,
-    });
+    handleActionItem(cart)(dispatch);
   };
 
   return (

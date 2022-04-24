@@ -5,9 +5,9 @@ import Link from "next/link";
 
 import { getProductById } from "../../api/storeAPI";
 import { Context } from "../../globalState/store";
-import { HANDLE_ITEM, HANDLE_MODAL } from "../../globalState/types";
 import { cartModel } from "../../models/cart";
 import { modalModel } from "../../models/modal";
+import { handleActionItem, handleActionModal } from "../../globalState/action";
 
 import {
   Container,
@@ -87,15 +87,11 @@ const Detail = () => {
 
     setQuantity(0);
 
-    dispatch({
-      type: HANDLE_ITEM,
-      payload: cart,
-    });
+    handleActionItem(cart)(dispatch);
 
-    dispatch({
-      type: HANDLE_MODAL,
-      payload: modalModel(true, "Produk berhasil ditambahkan ke keranjang"),
-    });
+    handleActionModal(
+      modalModel(true, "Produk berhasil ditambahkan ke keranjang")
+    )(dispatch);
   };
 
   const handleClickQuantity = (increment) => {
